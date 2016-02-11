@@ -1,0 +1,55 @@
+.linkcard {
+    margin: 10px;
+    color: #fff;
+    text-align: center;
+    border: solid 1px #999;
+    height: 240px;
+}
+
+.linkcard .logo {
+    position: relative;
+    float: left;
+    background: #fff;
+    width: 130px;
+    height: 100%;
+    margin: auto;
+}
+
+.linkcard .logo img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.linkcard .main {
+    background: #4e72ad;
+    margin-left: 130px;
+    height: 100%
+}
+
+.linkcard .hd {
+    font-size: 2em;
+}
+
+.linkcard .bd {
+}
+
+.linkcard .bd .links {
+    padding: 8%;
+}
+
+.linkcard .bd .links a {
+    color: #fff;
+}
+
+.linkcard .bd .links a:hover {
+    color: #000;
+    font-weight: bold;
+}
+
+.linkcard .subtitle {
+    font-size: 0.9em
+}

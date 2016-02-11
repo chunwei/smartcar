@@ -1,0 +1,66 @@
+.navbar {
+    border-radius: 5px 5px 0 0;
+    min-height: 50px;
+    color: #000;
+    background: #fff;
+    margin-bottom: 0px;
+}
+
+.navbar:after, .navbar:before {
+    clear: both;
+    display: table;
+    content: " ";
+}
+
+.navbar .route {
+    float: left;
+    position: relative;
+    height: 50px;
+    padding: 15px 30px;
+    line-height: 20px;
+}
+
+.navbar .route:before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 16px;
+    width: 18px;
+    height: 18px;
+    line-height: 18px;
+    background: url(../images/home.png) no-repeat;
+    background-size: contain;
+}
+
+.dropdown-menu {
+    min-width: 100px;
+    border: 1px solid #A4C6FD;
+}
+
+.navbar-nav > li > a {
+    padding: 5px;
+    margin-top: 10px;
+    /*    border-radius: 4px 4px 0 0;
+        border: 1px solid #71A7FF;*/
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
+    color: #FFF;
+    background-color: #71A7FF;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover {
+    color: #FFF;
+    background-color: #A4C6FD;
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    color: #333;
+    background-color: #E3EDFF;
+    background-color: rgba(164, 198, 253, 0.31);
+}
+
+.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover {
+    background-color: #E3EDFF;
+    background-color: rgba(164, 198, 253, 0.31);
+}

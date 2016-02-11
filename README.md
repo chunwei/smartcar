@@ -1,45 +1,19 @@
-WeUI 为微信 Web 服务量身设计  ![](https://travis-ci.org/weui/weui.svg?branch=master)
+smartcar 前端模板
 ====
 
 ## 概述
 
-WeUI是一套同微信原生视觉体验一致的基础样式库，由微信官方设计团队为微信 Web 开发量身设计，可以令用户的使用感知更加统一。包含`button`、`cell`、`dialog`、 `progress`、 `toast`、`article`、`actionsheet`、`icon`等各式元素。
+smartcar 是一套为智能汽车项目设计的前端模板。
 
 ## 使用
 
 #### 方法一：
-使用`bower`进行下载
-```
-bower install --save weui
-```
-
-#### 方法二：
-使用`npm`进行下载
-```
-npm install --save weui
-```
-
-以上两种方法下载后，只需要在页面中引入`dist/style/weui.css`或者`dist/style/weui.min.css`其中之一即可. 例如:
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-        <title>WeUI</title>
-        <link rel="stylesheet" href="path/to/weui/dist/style/weui.min.css"/>
-    </head>
-    <body>
-
-    </body>
-</html>
-```
+待续...
 
 ## 开发
 
 ```
-git clone https://github.com/weui/weui.git
+git clone https://github.com/chunwei/smartcar.git
 cd weui
 npm install -g gulp
 npm install

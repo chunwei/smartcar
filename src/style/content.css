@@ -1,0 +1,59 @@
+.bg-online {
+    background: #67b168
+}
+
+.bg-offline {
+    background: #e4b9b9
+}
+
+.bg-alert {
+    background: #e5e5e5
+}
+
+.panel .panel-body.panel-body-nopadding {
+    padding: 0
+}
+
+.panel .panel-title .legend {
+    border: solid 1px #fff;
+    width: 1em;
+    height: 0.9em;
+    display: inline-block;
+}
+
+.mainbody {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.panel {
+    margin-bottom: 6px;
+}
+
+.panel .panel-footer .pagination {
+    margin: 0px -5px;
+}
+
+.panel .table {
+    margin-bottom: 0
+}
+
+.pagergroup {
+    margin-left: 5px;
+    width: 10em;
+    display: inline-table;
+}
+
+@media (min-width: 768px) {
+    .panel.panel-primary {
+        margin-right: -15px;
+    }
+
+    .panel.panel-info {
+        margin-left: -10px;
+    }
+}
+
+#map {
+    height: 500px;
+}

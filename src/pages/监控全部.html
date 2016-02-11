@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>监控全部</title>
+    <link rel="stylesheet" href="../style/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../style/base.css"/>
+    <link rel="stylesheet" href="../style/grid.css"/>
+    <link rel="stylesheet" href="../style/header.css"/>
+    <link rel="stylesheet" href="../style/footer.css"/>
+    <link rel="stylesheet" href="../style/navbar.css"/>
+    <link rel="stylesheet" href="../style/content.css"/>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=rwAvLti2hTXN11t1jiipnrlw"></script>
+</head>
+<body>
+<header class="topheader">
+    <div class="container">
+        <a class="brand" href="#"><img src="../images/brand.png"></a>
+        <div class="title">安全监控预警系统</div>
+        <a class="logininfo" href="#">登出系统</a>
+    </div>
+    <div class="container">
+        <nav class="navbar  navbar-default">
+            <div class="route">当前位置:车辆信息 > 车辆实时信息</div>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right ">
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">下拉菜单 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">子菜单项</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">下拉菜单 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">子菜单项</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">子菜单项</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">子菜单项</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">子菜单项</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">子菜单项</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">子菜单项</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<div class="container mainbody">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">车辆信息<br>
+                        <small>(说明:
+                            <span class="legend bg-online"></span>在线中
+                            <span class="legend bg-alert"></span>报警中
+                            <span class="legend bg-offline"></span>离线中
+                            )
+                        </small>
+                    </h4>
+                </div>
+                <div class="panel-body panel-body-nopadding">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-condensed table-bordered">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>heading</th>
+                                <th>heading</th>
+                                <th>heading</th>
+                                <th>heading</th>
+                                <th>heading</th>
+                                <th>heading</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="bg-online">
+                                <th scope="row">1</th>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                            </tr>
+                            <tr class="bg-online">
+                                <th scope="row">2</th>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                            </tr>
+                            <tr class="bg-offline">
+                                <th scope="row">3</th>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                            </tr>
+                            <tr class="bg-online">
+                                <th scope="row">4</th>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                            </tr>
+                            <tr class="bg-alert">
+                                <th scope="row">5</th>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                            </tr>
+                            <tr class="bg-alert">
+                                <th scope="row">6</th>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">7</th>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                            </tr>
+                            <tr class="bg-online">
+                                <th scope="row">8</th>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">9</th>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">10</th>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <nav>
+                        <ul class="pagination pagination-sm">
+                            <li><a href="#">首页</a></li>
+                            <li><a href="#">上一页</a></li>
+                            <li><a href="#">下一页</a></li>
+                            <li><a href="#">尾页</a></li>
+                        </ul>
+                        <div class="input-group input-group-sm pagergroup">
+                            <span class="input-group-addon">共5页</span>
+                            <select class="form-control" id="whichpage">
+                                <option>第1页</option>
+                                <option>第2页</option>
+                                <option>第3页</option>
+                                <option>第4页</option>
+                                <option>第5页</option>
+                            </select>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title">实时位置</h4>
+                </div>
+                <div class="panel-body panel-body-nopadding">
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">实时报警</h4>
+                </div>
+                <div class="panel-body">
+                    <h3>暂无数据
+                        <small>(功能待明细)</small>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="doc-footer">
+    <div class="container">
+        <p class="copyright">版权所有 ©2016 XX公司</p>
+    </div>
+</footer>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    var map = new BMap.Map("map");
+    map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
+    map.addControl(new BMap.NavigationControl());
+    map.addControl(new BMap.ScaleControl());
+    map.addControl(new BMap.OverviewMapControl());
+    map.addControl(new BMap.MapTypeControl());
+    map.setCurrentCity("北京"); // 仅当设置城市信息时，MapTypeControl的切换功能才能可用
+</script>
+</body>
+</html>

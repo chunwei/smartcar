@@ -14,7 +14,7 @@ smartcar 是一套为智能汽车项目设计的前端模板。
 
 ```
 git clone https://github.com/chunwei/smartcar.git
-cd weui
+cd smartcar
 npm install -g gulp
 npm install
 npm start

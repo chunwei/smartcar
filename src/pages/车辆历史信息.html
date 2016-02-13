@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-    <title>监控全部</title>
+    <title>车辆历史信息</title>
     <link rel="stylesheet" href="../style/bootstrap.min.css"/>
     <link rel="stylesheet" href="../style/base.css"/>
     <link rel="stylesheet" href="../style/grid.css"/>
@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="../style/footer.css"/>
     <link rel="stylesheet" href="../style/navbar.css"/>
     <link rel="stylesheet" href="../style/content.css"/>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=rwAvLti2hTXN11t1jiipnrlw"></script>
 </head>
 <body>
 <header class="topheader">
@@ -22,7 +21,7 @@
     </div>
     <div class="container">
         <nav class="navbar  navbar-default">
-            <div class="route">当前位置:车辆位置 > 监控全部</div>
+            <div class="route">当前位置:车辆信息 > 车辆历史信息</div>
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -123,23 +122,64 @@
         <div class="col-sm-4">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h4 class="panel-title">车辆信息<br>
-                        <small>(说明:
-                            <span class="legend bg-online"></span>在线中
-                            <span class="legend bg-alert"></span>报警中
-                            <span class="legend bg-offline"></span>离线中
-                            )
-                        </small>
+                    <h4 class="panel-title">查询条件<br>
                     </h4>
-                    <br>
-                    <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" placeholder="车牌号/编号/VIN/车型/客户">
-                          <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">查询</button>
-                          </span>
-                    </div><!-- /input-group -->
                 </div>
-                <div class="panel-body panel-body-nopadding">
+                <div class="panel-body">
+                    <form class="form-horizontal">
+                        <div class="form-group form-group-sm">
+                            <label class="col-sm-5 control-label">车牌号:</label>
+                            <div class="col-sm-7">
+                                <select class="form-control" id="carnumber">
+                                    <option>浙B3678F</option>
+                                    <option>浙B7678B</option>
+                                    <option>浙B867B8</option>
+                                    <option>浙B6366A</option>
+                                    <option>浙B56789</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm">
+                            <label class="col-sm-5 control-label">企业车辆编号:</label>
+                            <div class="col-sm-7">
+                                <select class="form-control" id="enterprisecarid">
+                                    <option>asdfasdq1234123</option>
+                                    <option>asdf12341fasdfs</option>
+                                    <option>zxcv3wwqe123435</option>
+                                    <option>6578fasdfaswr57</option>
+                                    <option>hjlkasdf32146sd</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm">
+                            <label class="col-sm-5 control-label">开始时间:</label>
+                            <div class="col-sm-7">
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm">
+                            <label class="col-sm-5 control-label">结束时间:</label>
+                            <div class="col-sm-7">
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="panel-footer">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary">查询记录</button>
+                        <button type="button" class="btn btn-success">导出记录</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="panel panel-info">
+                <!--                <div class="panel-heading">
+                                    <h4 class="panel-title">实时位置</h4>
+                                </div>-->
+                <div class="panel-body">
+                    <div class="alert alert-info" role="alert">操作描述:车辆历史信息查询</div>
                     <div class="table-responsive">
                         <table class="table table-hover table-condensed table-bordered">
                             <thead>
@@ -154,7 +194,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="bg-online">
+                            <tr>
                                 <th scope="row">1</th>
                                 <td>cell</td>
                                 <td>cell</td>
@@ -163,7 +203,7 @@
                                 <td>cell</td>
                                 <td>cell</td>
                             </tr>
-                            <tr class="bg-online">
+                            <tr>
                                 <th scope="row">2</th>
                                 <td>cell</td>
                                 <td>cell</td>
@@ -172,7 +212,7 @@
                                 <td>cell</td>
                                 <td>cell</td>
                             </tr>
-                            <tr class="bg-offline">
+                            <tr>
                                 <th scope="row">3</th>
                                 <td>cell</td>
                                 <td>cell</td>
@@ -181,7 +221,7 @@
                                 <td>cell</td>
                                 <td>cell</td>
                             </tr>
-                            <tr class="bg-online">
+                            <tr>
                                 <th scope="row">4</th>
                                 <td>cell</td>
                                 <td>cell</td>
@@ -190,7 +230,7 @@
                                 <td>cell</td>
                                 <td>cell</td>
                             </tr>
-                            <tr class="bg-alert">
+                            <tr>
                                 <th scope="row">5</th>
                                 <td>cell</td>
                                 <td>cell</td>
@@ -199,7 +239,7 @@
                                 <td>cell</td>
                                 <td>cell</td>
                             </tr>
-                            <tr class="bg-alert">
+                            <tr>
                                 <th scope="row">6</th>
                                 <td>cell</td>
                                 <td>cell</td>
@@ -217,7 +257,7 @@
                                 <td>cell</td>
                                 <td>cell</td>
                             </tr>
-                            <tr class="bg-online">
+                            <tr>
                                 <th scope="row">8</th>
                                 <td>cell</td>
                                 <td>cell</td>
@@ -270,16 +310,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-8">
-            <div class="panel panel-info">
-                <!--                <div class="panel-heading">
-                                    <h4 class="panel-title">实时位置</h4>
-                                </div>-->
-                <div class="panel-body panel-body-nopadding">
-                    <div id="map"></div>
-                </div>
-            </div>
-        </div>
     </div>
     <div class="row">
         <div class="col-sm-12">
@@ -303,14 +333,6 @@
 </footer>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
-<script type="text/javascript">
-    var map = new BMap.Map("map");
-    map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
-    map.addControl(new BMap.NavigationControl());
-    map.addControl(new BMap.ScaleControl());
-    map.addControl(new BMap.OverviewMapControl());
-    map.addControl(new BMap.MapTypeControl());
-    map.setCurrentCity("北京"); // 仅当设置城市信息时，MapTypeControl的切换功能才能可用
-</script>
+
 </body>
 </html>

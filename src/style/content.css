@@ -38,6 +38,13 @@
     margin-bottom: 0
 }
 
+.tab-content.top20 {
+    padding-top: 20px;
+}
+
+.tab-pane.dark {
+    background: #222;
+}
 .pagergroup {
     margin-left: 5px;
     width: 10em;
@@ -45,11 +52,11 @@
 }
 
 @media (min-width: 768px) {
-    .panel.panel-primary {
+    .lr .panel.panel-primary {
         margin-right: -15px;
     }
 
-    .panel.panel-info {
+    .lr .panel.panel-info {
         margin-left: -10px;
     }
 }

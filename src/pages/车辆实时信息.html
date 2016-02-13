@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
-    <title>监控全部</title>
+    <title>车辆实时信息</title>
     <link rel="stylesheet" href="../style/bootstrap.min.css"/>
     <link rel="stylesheet" href="../style/base.css"/>
     <link rel="stylesheet" href="../style/grid.css"/>
@@ -22,7 +22,7 @@
     </div>
     <div class="container">
         <nav class="navbar  navbar-default">
-            <div class="route">当前位置:车辆位置 > 监控全部</div>
+            <div class="route">当前位置:车辆信息 > 车辆实时信息</div>
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -149,15 +149,11 @@
                                 <th>heading</th>
                                 <th>heading</th>
                                 <th>heading</th>
-                                <th>heading</th>
-                                <th>heading</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr class="bg-online">
                                 <th scope="row">1</th>
-                                <td>cell</td>
-                                <td>cell</td>
                                 <td>cell</td>
                                 <td>cell</td>
                                 <td>cell</td>
@@ -169,13 +165,9 @@
                                 <td>cell</td>
                                 <td>cell</td>
                                 <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
                             </tr>
                             <tr class="bg-offline">
                                 <th scope="row">3</th>
-                                <td>cell</td>
-                                <td>cell</td>
                                 <td>cell</td>
                                 <td>cell</td>
                                 <td>cell</td>
@@ -187,13 +179,9 @@
                                 <td>cell</td>
                                 <td>cell</td>
                                 <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
                             </tr>
                             <tr class="bg-alert">
                                 <th scope="row">5</th>
-                                <td>cell</td>
-                                <td>cell</td>
                                 <td>cell</td>
                                 <td>cell</td>
                                 <td>cell</td>
@@ -205,13 +193,9 @@
                                 <td>cell</td>
                                 <td>cell</td>
                                 <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
                             </tr>
                             <tr>
                                 <th scope="row">7</th>
-                                <td>cell</td>
-                                <td>cell</td>
                                 <td>cell</td>
                                 <td>cell</td>
                                 <td>cell</td>
@@ -223,8 +207,6 @@
                                 <td>cell</td>
                                 <td>cell</td>
                                 <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
                             </tr>
                             <tr>
                                 <th scope="row">9</th>
@@ -232,13 +214,9 @@
                                 <td>cell</td>
                                 <td>cell</td>
                                 <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
                             </tr>
                             <tr>
                                 <th scope="row">10</th>
-                                <td>cell</td>
-                                <td>cell</td>
                                 <td>cell</td>
                                 <td>cell</td>
                                 <td>cell</td>
@@ -275,8 +253,183 @@
                 <!--                <div class="panel-heading">
                                     <h4 class="panel-title">实时位置</h4>
                                 </div>-->
-                <div class="panel-body panel-body-nopadding">
-                    <div id="map"></div>
+                <div class="panel-body">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab"
+                                                                  data-toggle="tab">车辆信息</a></li>
+                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">整车信息</a>
+                        </li>
+                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab"
+                                                   data-toggle="tab">故障报警</a></li>
+                        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab"
+                                                   data-toggle="tab">电机状态</a></li>
+                        <li role="presentation"><a href="#chargestatus" aria-controls="chargestatus" role="tab"
+                                                   data-toggle="tab">充电信息</a></li>
+                    </ul>
+                    <div class="tab-content top20">
+                        <div role="tabpanel" class="tab-pane dark fade in active" id="home">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <canvas id="gauge" class="center-block"></canvas>
+                                </div>
+                                <div class="col-sm-6">
+                                    <canvas id="gauge1" class="center-block"></canvas>
+                                </div>
+                                <div class="col-sm-12">
+                                    <canvas id="gauge2" class="center-block"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="profile">
+                            <div class="alert alert-danger" role="alert">该车未运行,没有相关实时信息</div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                    <tr>
+                                        <td>单体最高电压(V)</td>
+                                        <td>-</td>
+                                        <td>电池温度采集点最大值(V)</td>
+                                        <td>-</td>
+                                        <td>最高电压单体节点</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>最低电压单体节点</td>
+                                        <td>-</td>
+                                        <td>电池组平均温度(℃)</td>
+                                        <td>-</td>
+                                        <td>电池组最高温度(℃)</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>电池组最低温度(℃)</td>
+                                        <td>-</td>
+                                        <td>最高温度串号</td>
+                                        <td>-</td>
+                                        <td>最低温度串号</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>电池组循环充放电次数</td>
+                                        <td>-</td>
+                                        <td>SOH</td>
+                                        <td>-</td>
+                                        <td>电机转速(rpm)</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>正极绝缘阻值(KΩ)</td>
+                                        <td>-</td>
+                                        <td>负极绝缘阻值(KΩ)</td>
+                                        <td>-</td>
+                                        <td>蜂鸣器开关</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>电机运行方向</td>
+                                        <td>-</td>
+                                        <td>控制模式</td>
+                                        <td>-</td>
+                                        <td>工作模式</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>放电继电器控制</td>
+                                        <td>-</td>
+                                        <td>放电继电器</td>
+                                        <td>-</td>
+                                        <td>预充继电器</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>充电继电器</td>
+                                        <td>-</td>
+                                        <td>负极继电器</td>
+                                        <td>-</td>
+                                        <td>PTC</td>
+                                        <td>-</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="messages">
+                            <div class="alert alert-danger" role="alert">该车未运行,没有相关实时信息</div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                    <tr>
+                                        <td>电池温度过高</td>
+                                        <td>-</td>
+                                        <td>电池温度过低</td>
+                                        <td>-</td>
+                                        <td>电池绝缘强度</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>电池欠压</td>
+                                        <td>-</td>
+                                        <td>电池过压</td>
+                                        <td>-</td>
+                                        <td>电池过流</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>单体压差过大</td>
+                                        <td>-</td>
+                                        <td>电池预充</td>
+                                        <td>-</td>
+                                        <td>电池通信</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>电池能量低</td>
+                                        <td>-</td>
+                                        <td>绝缘过低</td>
+                                        <td>-</td>
+                                        <td>系统故障</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>电机故障</td>
+                                        <td>-</td>
+                                        <td>电池故障</td>
+                                        <td>-</td>
+                                        <td>电机状态</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>电机过温</td>
+                                        <td>-</td>
+                                        <td>电机控制器过温</td>
+                                        <td>-</td>
+                                        <td>电机母线过压</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>电机母线欠压</td>
+                                        <td>-</td>
+                                        <td>电机过流</td>
+                                        <td>-</td>
+                                        <td>电机通讯故障</td>
+                                        <td>-</td>
+                                    </tr>
+                                    <tr>
+                                        <td>电机超速</td>
+                                        <td>-</td>
+                                        <td>IGBT</td>
+                                        <td>-</td>
+                                        <td>电机传感器</td>
+                                        <td>-</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div role="tabpanel" class="tab-pane fade" id="settings">电机状态...</div>
+                        <div role="tabpanel" class="tab-pane fade" id="chargestatus">充电信息...</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -312,5 +465,7 @@
     map.addControl(new BMap.MapTypeControl());
     map.setCurrentCity("北京"); // 仅当设置城市信息时，MapTypeControl的切换功能才能可用
 </script>
+<script src="../js/gauge.min.js"></script>
+<script src="../js/car-gauge.js"></script>
 </body>
 </html>

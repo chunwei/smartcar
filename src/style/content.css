@@ -26,12 +26,19 @@
     margin-bottom: 20px;
 }
 
+#map {
+    height: 600px;
+}
 .panel {
     margin-bottom: 6px;
 }
 
 .panel .panel-footer .pagination {
     margin: 0px -5px;
+}
+
+.panel .panel-footer .pagination-sm > li > a {
+    padding: 5px 8px;
 }
 
 .panel .table {
@@ -61,6 +68,8 @@
     }
 }
 
-#map {
-    height: 500px;
+@media (min-width: 1500px) {
+    .container {
+        width: 1470px
+    }
 }

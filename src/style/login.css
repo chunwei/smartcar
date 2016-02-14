@@ -1,0 +1,98 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    position: relative;
+    background: #2274B1 url('../images/loginbg.png') center center no-repeat;
+}
+
+.loginform {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 300px;
+    width: 300px;
+    margin: auto;
+}
+
+.loginform .logo {
+    position: absolute;
+    border: solid 1px #ccc;
+    height: 200px;
+    width: 200px;
+    margin-top: -20px;
+    margin-left: -450px;
+    background: #e5e5e5 /*url('../images/logo.png') center center no-repeat*/;
+}
+
+.loginform form {
+    margin-top: 100px;
+    margin-left: 10px;
+}
+
+.loginform .logintable {
+    width: 580px;
+}
+
+.loginform .logintable td {
+    height: 50px;
+    vertical-align: middle;
+}
+
+.loginform .logintable td.label {
+    width: 100px;
+    text-align: right
+}
+
+.loginform .logintable td.inputitem {
+    width: 380px;
+    text-align: center
+}
+
+.loginform .logintable td.btn {
+    width: 100px;
+    text-align: center;
+}
+
+.loginform input {
+    padding: 1px 0px 1px 0px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 30px;
+    width: 360px;
+    font-size: 16px;
+}
+
+.loginform button[type=submit] {
+    width: 82px;
+    height: 82px;
+    border-radius: 8px;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-weight: 600;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    background-color: #72B122;
+    border: 1px solid #6F7070;
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.loginform button[type=submit]:hover, .loginform button[type=submit]:active {
+    background-color: #0F305B;
+}

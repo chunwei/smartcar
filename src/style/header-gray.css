@@ -1,0 +1,38 @@
+.topheader {
+    position: relative;
+    min-height: 68px;
+    background: #AEAEAE;
+    color: #fff;
+}
+
+.topheader a.logininfo {
+    color: #eee;
+}
+
+.topheader a.logininfo:hover {
+    color: #fff;
+}
+
+.topheader .brand {
+    float: left;
+    position: relative;
+}
+
+.topheader .title, .topheader .logininfo {
+    height: 68px;
+    padding: 15px 15px;
+    line-height: 38px;
+}
+
+.topheader .title {
+    float: left;
+    font-size: 28px;
+    font-weight: 500;
+    /*    border-left: solid 1px #9E9E9E;*/
+}
+
+.topheader .logininfo {
+    float: right !important;
+    font-size: 16px;
+    font-weight: 500;
+}

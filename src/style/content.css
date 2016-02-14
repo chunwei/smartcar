@@ -1,15 +1,18 @@
 .bg-online {
-    background: #67b168
+    background: #39D628
 }
 
 .bg-offline {
-    background: #e4b9b9
+    background: #CFCFCF
 }
 
 .bg-alert {
-    background: #e5e5e5
+    background: #FC0019
 }
 
+.panel.panel-primary .panel-body.panel-body-nopadding {
+    padding: 5px;
+}
 .panel .panel-body.panel-body-nopadding {
     padding: 0
 }
@@ -33,6 +36,19 @@
     margin-bottom: 6px;
 }
 
+.panel-primary, .panel-info, .panel-danger {
+    border-color: #6F7070;
+}
+
+.panel-primary > .panel-heading {
+    background-color: #35639A;
+
+}
+
+.panel-danger > .panel-heading {
+    background-color: #fff;
+    color: #FF0000;
+}
 .panel .panel-footer .pagination {
     margin: 0px -5px;
 }
@@ -45,12 +61,41 @@
     margin-bottom: 0
 }
 
+.nav-pills > li > a {
+    color: #000;
+    padding: 3px 12px;
+    border: solid 1px #6F7070;
+    margin: 0;
+}
+
+.nav-pills > li + li {
+    margin-left: 0px;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+    color: #000;
+    font-weight: bold;
+    background-color: #CFCFCF;
+}
 .tab-content.top20 {
     padding-top: 20px;
 }
 
 .tab-pane.dark {
     background: #222;
+}
+
+.gaugecanvas {
+    min-width: 130px;
+    max-width: 400px;
+    height: 480px;
+}
+
+.columncanvas {
+    width: 100%;
+    min-width: 50px;
+    max-width: 300px;
+    height: 480px;
 }
 .pagergroup {
     margin-left: 5px;

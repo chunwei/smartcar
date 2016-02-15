@@ -38,8 +38,8 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">下拉菜单 <!--<span class="caret"></span>--></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">子菜单项</a></li>
-                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项单项</a></li>
+                            <li><a href="#">子菜单项项</a></li>
                             <li><a href="#">子菜单项</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#">子菜单项</a></li>
@@ -120,16 +120,14 @@
 <div class="container mainbody">
     <div class="row lr">
         <div class="col-sm-4">
-            <div class="panel panel-primary">
+            <div class="panel tcf panel-primary">
                 <div class="panel-heading">
-                    <h4 class="panel-title">查询条件<br>
-                    </h4>
-                </div>
-                <div class="panel-body">
-                    <form class="form-horizontal">
+                    <!--<h4 class="panel-title">车辆历史信息<br>-->
+                    <!--</h4>-->
+                    <form id="leftform" class="form-horizontal">
                         <div class="form-group form-group-sm">
-                            <label class="col-sm-5 control-label">车牌号:</label>
-                            <div class="col-sm-7">
+                            <label class="col-xs-5 control-label">车牌号:</label>
+                            <div class="col-xs-7">
                                 <select class="form-control" id="carnumber">
                                     <option>浙B3678F</option>
                                     <option>浙B7678B</option>
@@ -140,8 +138,8 @@
                             </div>
                         </div>
                         <div class="form-group form-group-sm">
-                            <label class="col-sm-5 control-label">企业车辆编号:</label>
-                            <div class="col-sm-7">
+                            <label class="col-xs-5 control-label">企业车辆编号:</label>
+                            <div class="col-xs-7">
                                 <select class="form-control" id="enterprisecarid">
                                     <option>asdfasdq1234123</option>
                                     <option>asdf12341fasdfs</option>
@@ -152,29 +150,136 @@
                             </div>
                         </div>
                         <div class="form-group form-group-sm">
-                            <label class="col-sm-5 control-label">开始时间:</label>
-                            <div class="col-sm-7">
+                            <label class="col-xs-5 control-label">开始时间:</label>
+                            <div class="col-xs-7">
                                 <input type="date" class="form-control">
                             </div>
                         </div>
                         <div class="form-group form-group-sm">
-                            <label class="col-sm-5 control-label">结束时间:</label>
-                            <div class="col-sm-7">
+                            <label class="col-xs-5 control-label">结束时间:</label>
+                            <div class="col-xs-7">
                                 <input type="date" class="form-control">
                             </div>
                         </div>
+                        <div class="row"><div class="col-xs-12 text-right">
+                            <button type="button" class="btn btn-success">查询记录</button>
+                        </div></div>
                     </form>
+                   <!-- <form class="form-inline">
+                        <div class="form-group form-group-sm">
+                            <label class="control-label">车牌号:</label>
+                                <select class="form-control" id="carnumber">
+                                    <option>浙B3678F</option>
+                                    <option>浙B7678B</option>
+                                    <option>浙B867B8</option>
+                                    <option>浙B6366A</option>
+                                    <option>浙B56789</option>
+                                </select>
+                            <label class="control-label">企业车辆编号:</label>
+                                <select class="form-control" id="enterprisecarid">
+                                    <option>asdfasdq1234123</option>
+                                    <option>asdf12341fasdfs</option>
+                                    <option>zxcv3wwqe123435</option>
+                                    <option>6578fasdfaswr57</option>
+                                    <option>hjlkasdf32146sd</option>
+                                </select>
+                            <br>
+                            <label class="control-label">开始时间:</label>
+                                <input type="date" class="form-control">
+                            <label class="control-label">结束时间:</label>
+                                <input type="date" class="form-control">
+                            <button type="button" class="btn btn-primary">查询</button>
+                        </div>
+                    </form>-->
+                </div>
+                <div class="panel-body panel-body-nopadding">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-striped table-condensed table-bordered">
+                            <thead class="bg-info">
+                            <tr>
+                                <th>#</th>
+                                <th>heading</th>
+                                <th>heading</th>
+                                <th>heading</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">4</th>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">5</th>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">6</th>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">7</th>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">8</th>
+                                <td>cell</td>
+                                <td>cell</td>
+                                <td>cell</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="panel-footer">
-                    <div class="text-center">
-                        <button type="button" class="btn btn-primary">查询记录</button>
-                        <button type="button" class="btn btn-success">导出记录</button>
-                    </div>
+                    <nav class=" pull-right">
+                        <ul class="pagination pagination-sm">
+                            <li><a href="#">首页</a></li>
+                            <li><a href="#">上一页</a></li>
+                            <li><a href="#">下一页</a></li>
+                            <li><a href="#">尾页</a></li>
+                        </ul>
+                        <div class="input-group input-group-sm pagergroup">
+                            <span class="input-group-addon">共5页</span>
+                            <select class="form-control">
+                                <option>第1页</option>
+                                <option>第2页</option>
+                                <option>第3页</option>
+                                <option>第4页</option>
+                                <option>第5页</option>
+                            </select>
+                        </div>
+                    </nav>
                 </div>
             </div>
         </div>
         <div class="col-sm-8">
-            <div class="panel panel-info">
+            <div class="panel tcf panel-info">
                 <!--                <div class="panel-heading">
                                     <h4 class="panel-title">实时位置</h4>
                                 </div>-->
@@ -289,7 +394,7 @@
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <nav>
+                    <nav class=" pull-right">
                         <ul class="pagination pagination-sm">
                             <li><a href="#">首页</a></li>
                             <li><a href="#">上一页</a></li>
@@ -307,6 +412,7 @@
                             </select>
                         </div>
                     </nav>
+                        <button type="button" class="btn btn-primary pull-left">导出记录</button>
                 </div>
             </div>
         </div>
@@ -333,6 +439,10 @@
 </footer>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script>
+    $(function () {
 
+    })
+</script>
 </body>
 </html>

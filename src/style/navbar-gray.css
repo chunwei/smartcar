@@ -38,11 +38,16 @@
 }
 
 .dropdown-menu {
-    min-width: 100px;
+    min-width: 96px;
+    text-align: center;
     border: 1px solid #9D9C9C;
 }
-
+.dropdown-menu > li > a {
+    padding: 3px 5px;
+}
 .navbar-nav > li > a {
+    min-width: 96px;
+    text-align: center;
     padding: 5px;
     margin-top: 10px;
     border-radius: 4px 4px 0 0;
@@ -52,7 +57,7 @@
 }
 
 .navbar-default .navbar-nav > li {
-    margin-right: 10px;
+    margin-right: 6px;
 }
 
 .navbar-default .navbar-nav > li > a {

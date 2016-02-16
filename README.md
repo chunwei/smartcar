@@ -8,11 +8,9 @@ smartcar 是一套为智能汽车项目设计的前端模板。
 ## 使用
 
 ## Todo
-min-width =1000
-左右panel高度固定一致
-下拉菜单边界对齐
+
 table及pagination 模板后期由js生成，并ajax更新
-logo随便换一张cool点的
+
 
 #### 方法一：
 待续...

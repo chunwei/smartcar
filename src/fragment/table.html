@@ -1,6 +1,19 @@
 <link rel="stylesheet" href="../style/bootstrap.min.css"/>
 <link rel="stylesheet" href="../style/content.css"/>
 
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            <table id="table1" class="table table-hover table-condensed table-bordered"></table>
+        </div>
+        <div class="col-sm-6">
+            <table id="table2" class="table table-hover table-condensed table-bordered"></table>
+        </div>
+    </div>
+</div>
+
+
+
 <div class="table-responsive">
     <table class="table table-hover table-condensed table-bordered">
         <thead>
@@ -108,3 +121,29 @@
         </tbody>
     </table>
 </div>
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.lui.js"></script>
+<script>
+    var cols=[{name:"col1",title:"表头1"},{name:"col2",title:"表头2"},{name:"col3",title:"表头3"}];
+    var rows=[{col1:"单元格11",col2:"单元格13",col3:"单元格13",status:1}];
+    for(var i=2;i<11;i++){
+        rows[i-1]={col1:"单元格"+i+"1",col2:"单元格"+i+"3",col3:"单元格"+i+"3",status:i}
+    }
+    var rc=function(row){
+        var c;
+        switch (row.status%4){
+            //case 0:c="bg-online";break;
+            case 1:c="bg-offline";break;
+            case 2:c="bg-alert";break;
+            case 3:c="bg-online";break;
+        }
+        return c;
+    };
+    var rcb=function(row){
+        console.log(row);
+    };
+    var tableOptions={cols:cols,rows:rows,rowClass:rc,num:true};
+    $('#table1').table(tableOptions);
+    $('#table2').table({cols:cols,rows:rows,headClass:'bg-info',rowOnClick:rcb});
+</script>

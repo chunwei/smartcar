@@ -20,5 +20,51 @@
                 </select>
             </div>
         </nav>
+
+        <div class="row">
+            <nav id="pagination1"></nav>
+        </div>
+        <div class="row">
+            <nav id="pagination2"></nav>
+        </div>
+        <div class="row">
+            <nav id="pagination3"></nav>
+        </div>
     </div>
 </div>
+
+<script src="../js/jquery.min.js"></script>
+<script src="../js/jquery.lui.js"></script>
+<script>
+    var pagination1Option={
+        currentPage:1,
+        hasNextPage:false,
+        hasPreviousPage:false,
+        pageSize:10,
+        startIndex:0,
+        totalCount:1,
+        totalPage:1
+    };
+    var pagination2Option={
+        currentPage:2,
+        hasNextPage:false,
+        hasPreviousPage:false,
+        pageSize:10,
+        startIndex:11,
+        totalCount:50,
+        totalPage:5
+    };
+    var pagination3Option={
+        currentPage:3,
+        hasNextPage:false,
+        hasPreviousPage:false,
+        pageSize:10,
+        startIndex:0,
+        totalCount:1,
+        totalPage:7
+    };
+
+    $('#pagination1').pagination(pagination1Option);
+    $('#pagination2').pagination(pagination2Option);
+    $('#pagination3').pagination(pagination3Option);
+</script>

@@ -46,8 +46,48 @@
     };
 
     $.fn.pagination=function(options){
-        var defaults={};
+        var defaults={
+            currentPage:1,
+            hasNextPage:false,
+            hasPreviousPage:false,
+            pageSize:10,
+            startIndex:0,
+            totalCount:1,
+            totalPage:1
+        };
         var settings=$.extend(defaults,options);
+
+        var pagination=$(
+            "<ul class='pagination pagination-sm'>"+
+            "<li><a>首页</a></li>"+
+            "<li><a>上一页</a></li>"+
+            "<li><a>下一页</a></li>"+
+            "<li><a>尾页</a></li>"+
+            "</ul>");
+
+        var totalpage=$("<span class='input-group-addon'></span>").text('共'+settings.totalPage+'页');
+        var select=$("<select class='form-control'>");
+        for(var i=1;i<=settings.totalPage;i++){
+            var selected=i==settings.currentPage?"selected='selected'":"";
+            select.append("<option value='"+i+"' "+selected+">第"+i+"页</option>");
+        }
+        select.on('change',function(){console.log($(this).val())});
+        var inputgroup=$("<div class='input-group input-group-sm pagergroup'>");
+        inputgroup.append(totalpage).append(select);
+        this.empty().append(pagination).append(inputgroup);
+
+        this.on('click','ul>li',function(e){
+            e.preventDefault();
+            var targetPage=settings.currentPage;
+            switch ($(this).index()){
+                case 0:targetPage=1;break;
+                case 1:targetPage-=1;break;
+                case 2:targetPage+=1;break;
+                case 3:targetPage=settings.totalPage;break;
+            }
+            console.log($(this).index()+"::"+targetPage);
+        });
+
         return this;
     };
 })(jQuery);

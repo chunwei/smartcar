@@ -1,0 +1,32 @@
+/**
+ * Created by chunwei on 2016/2/17.
+ */
+var LU=LU||{};
+function getJsonData(url,params,callback) {
+    var jqxhr =$.ajax({
+        type: "GET",
+        url: url,
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(params),
+        dataType: "json"
+    }).done(function (resultData){
+        if('function'==typeof callback)
+        callback(resultData);
+        console.log(resultData.code+" : " +resultData.message);
+    });
+}
+
+// 全局ajax错误处理
+$( document ).ajaxError(function( event, request, settings ) {
+    LU.msgtips( "与服务器通信时发生错误，操作不成功 " ,{type:"error"});
+});
+
+// 提示
+LU.msgtips = function(msg, opts){
+    var opts=opts||{};
+    var msgClass="msgtips ";
+    if(typeof opts.type==='string')msgClass+=opts.type;
+    var msg = $('<div class="'+msgClass+'"><div>' + msg + '</div></div>').appendTo($(document.body));
+    msg.animate({ 'top':0 }, 200);
+    setTimeout(function(){ msg.animate({ 'top':-36 }, 200,function(){msg.remove();}); }, opts.timeout || 3000);
+};

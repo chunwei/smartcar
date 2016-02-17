@@ -29,3 +29,41 @@ a img {
 a {
     text-decoration: none;
 }
+
+
+.msgtips {
+    position: fixed;
+    top: -36px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 99999;
+    text-align: center;
+    background-color: rgba(17, 211, 130, 0.8);
+}
+.msgtips.warn {
+    background-color: rgba(235, 152, 18, 0.8);
+}
+.msgtips.error {
+    background-color: rgba(235, 19, 27, 0.8);
+}
+.msgtips div {
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+    /*height: 42px;*/
+    line-height: 36px;
+    padding: 0 16px;
+    min-width: 140px;
+
+    border-radius: 3px;
+    font-size: 14px;
+}
+.msgtips.loading div {
+    background-image: url(http://img1.qidapp.cn/image/loading-a2.gif);
+    background-position: center 18px;
+    background-repeat: no-repeat;
+    height: 75px;
+    line-height: 1;
+    padding-top: 45px;
+}

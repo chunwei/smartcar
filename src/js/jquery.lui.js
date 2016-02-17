@@ -45,7 +45,7 @@
         return this;
     };
 
-    $.fn.pagination=function(options){
+    $.fn.pagination=function(options,onPageChange){
         var defaults={
             currentPage:1,
             hasNextPage:false,
@@ -57,13 +57,24 @@
         };
         var settings=$.extend(defaults,options);
 
+
         var pagination=$(
             "<ul class='pagination pagination-sm'>"+
-            "<li><a>首页</a></li>"+
-            "<li><a>上一页</a></li>"+
-            "<li><a>下一页</a></li>"+
-            "<li><a>尾页</a></li>"+
+            "<li><a href='#'>首页</a></li>"+
+            "<li><a href='#'>上一页</a></li>"+
+            "<li><a href='#'>下一页</a></li>"+
+            "<li><a href='#'>尾页</a></li>"+
             "</ul>");
+        pagination.find('li').each(function () {
+            var disabled=false;
+            switch ($(this).index()){
+                case 0:if(settings.currentPage==1)disabled=true;break;
+                case 1:if(!settings.hasPreviousPage)disabled=true;break;
+                case 2:if(!settings.hasNextPage)disabled=true;break;
+                case 3:if(settings.currentPage==settings.totalPage)disabled=true;break;
+            }
+            if(disabled)$(this).addClass('disabled');
+        });
 
         var totalpage=$("<span class='input-group-addon'></span>").text('共'+settings.totalPage+'页');
         var select=$("<select class='form-control'>");
@@ -71,22 +82,36 @@
             var selected=i==settings.currentPage?"selected='selected'":"";
             select.append("<option value='"+i+"' "+selected+">第"+i+"页</option>");
         }
-        select.on('change',function(){console.log($(this).val())});
         var inputgroup=$("<div class='input-group input-group-sm pagergroup'>");
         inputgroup.append(totalpage).append(select);
         this.empty().append(pagination).append(inputgroup);
 
-        this.on('click','ul>li',function(e){
+        select.on('change',function(){
+            var targetPage=$(this).val();
+            next(targetPage);
+        });
+        pagination.on('click','li',function(e){
             e.preventDefault();
+            if($(this).hasClass('disabled'))return;
             var targetPage=settings.currentPage;
             switch ($(this).index()){
                 case 0:targetPage=1;break;
-                case 1:targetPage-=1;break;
-                case 2:targetPage+=1;break;
+                case 1:targetPage-=1;targetPage=Math.max(1,targetPage);break;
+                case 2:targetPage+=1;targetPage=Math.min(settings.totalPage,targetPage);break;
                 case 3:targetPage=settings.totalPage;break;
             }
-            console.log($(this).index()+"::"+targetPage);
+            next(targetPage);
         });
+
+        function next(targetPage){console.log('go page: '+targetPage);
+            var params= {
+                    filter:null,
+                    pagination:$.extend(settings, {currentPage: targetPage}),
+                };
+            if('function'==typeof onPageChange){
+                onPageChange(params);
+            }
+        }
 
         return this;
     };

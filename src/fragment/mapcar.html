@@ -28,11 +28,12 @@
     var opts = {
         width : 200,     // 信息窗口宽度
         height: 100,     // 信息窗口高度
-        title : "信息窗口标题" , // 信息窗口标题
+        offset: new BMap.Size(40,-30),//信息窗口偏移
+        title : "车辆详情" , // 信息窗口标题
         enableMessage:true,//设置允许信息窗发送短息
         message:"车辆详情。。。。。"
     };
-
+    var markers=[];
     // 编写自定义函数,创建标注
     function addMarker(point,direct){
     var label = new BMap.Label("浙B88666",{offset:new BMap.Size(0,-20)});
@@ -40,34 +41,43 @@
         var marker = new BMap.Marker(point,{icon:icons[Math.floor(Math.random()*4)]});
         marker.setLabel(label);
         marker.setRotation(direct);
-        var infoWindow = new BMap.InfoWindow("车辆详情", opts);  // 创建信息窗口对象
-        marker.addEventListener("click", function(){
-            map.openInfoWindow(infoWindow,point); //开启信息窗口
+        var content="详情写在这里，<br>可以包含html标签";
+        marker.addEventListener("click", function(e){
+            openInfo(content,e);
         });
         map.addOverlay(marker);
+        markers.push(marker);
     }
+    //开启信息窗口
+    function openInfo(content,e){
+        var p = e.target;
+        var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+        var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象
+        map.openInfoWindow(infoWindow,point); //开启信息窗口
+    }
+
     // 随机向地图添加10个标注
     var bounds = map.getBounds();
     var sw = bounds.getSouthWest();
     var ne = bounds.getNorthEast();
     var lngSpan = Math.abs(sw.lng - ne.lng);
     var latSpan = Math.abs(ne.lat - sw.lat);
+
     for (var k = 0; k < 10; k ++) {
         var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
         addMarker(point,360* Math.random());
     }
     function resetMkPoint(){
-        var mks=map.getOverlays();console.log(mks.length);
-        for (var i = 0; i < mks.length-1; i++) {console.log(i);
-            if((mks[0].V).className.indexOf('BMap_Marker')==-1)continue;
+        for (var i = 0; i < markers.length; i++) {
             var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
-            mks[i].setPosition(point);
-            mks[i].setRotation(360* Math.random());
+            markers[i].setPosition(point);
+            markers[i].setRotation(360* Math.random());
         }
+        map.openInfoWindow(map.getInfoWindow(),point);
     }
     function run(){
         resetMkPoint();
-        setTimeout(run,1000);
+        setTimeout(run,10000);
     }
     setTimeout(run,3000);
 </script>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+        #l-map{height:100%;width:78%;float:left;border-right:2px solid #bcbcbc;}
+        #r-result{height:100%;width:20%;float:left;}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=rwAvLti2hTXN11t1jiipnrlw"></script>
+    <title>添加多个标注点</title>
+</head>
+<body>
+<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(121.579, 29.885);
+    map.centerAndZoom(point, 15);
+    var carIconG=new BMap.Icon('http://localhost:63344/baidumap/icon/car_60x30_g.png', new BMap.Size(60,30)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var carIconR=new BMap.Icon('http://localhost:63344/baidumap/icon/car_60x30_r.png', new BMap.Size(60,30)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var carIconY=new BMap.Icon('http://localhost:63344/baidumap/icon/car_60x30_y.png', new BMap.Size(60,30)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var carIconO=new BMap.Icon('http://localhost:63344/baidumap/icon/car_30x66.png', new BMap.Size(30,66)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var icons=[carIconG,carIconR,carIconY,carIconO];
+    var opts = {
+        width : 200,     // 信息窗口宽度
+        height: 100,     // 信息窗口高度
+        title : "信息窗口标题" , // 信息窗口标题
+        enableMessage:true,//设置允许信息窗发送短息
+        message:"车辆详情。。。。。"
+    };
+
+    // 编写自定义函数,创建标注
+    function addMarker(point,direct){
+    var label = new BMap.Label("浙B88666",{offset:new BMap.Size(0,-20)});
+        label.setStyle({border:'none',borderRadius:'5px',boxShadow: '0 1px 4px rgba(0,0,0,0.3)',padding:'5px',color:'#fff',backgroundColor:'rgba(0, 137, 243, 0.9)'});
+        var marker = new BMap.Marker(point,{icon:icons[Math.floor(Math.random()*4)]});
+        marker.setLabel(label);
+        marker.setRotation(direct);
+        var infoWindow = new BMap.InfoWindow("车辆详情", opts);  // 创建信息窗口对象
+        marker.addEventListener("click", function(){
+            map.openInfoWindow(infoWindow,point); //开启信息窗口
+        });
+        map.addOverlay(marker);
+    }
+    // 随机向地图添加10个标注
+    var bounds = map.getBounds();
+    var sw = bounds.getSouthWest();
+    var ne = bounds.getNorthEast();
+    var lngSpan = Math.abs(sw.lng - ne.lng);
+    var latSpan = Math.abs(ne.lat - sw.lat);
+    for (var k = 0; k < 10; k ++) {
+        var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
+        addMarker(point,360* Math.random());
+    }
+    function resetMkPoint(){
+        var mks=map.getOverlays();console.log(mks.length);
+        for (var i = 0; i < mks.length-1; i++) {console.log(i);
+            if((mks[0].V).className.indexOf('BMap_Marker')==-1)continue;
+            var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
+            mks[i].setPosition(point);
+            mks[i].setRotation(360* Math.random());
+        }
+    }
+    function run(){
+        resetMkPoint();
+        setTimeout(run,1000);
+    }
+    setTimeout(run,3000);
+</script>

@@ -6,6 +6,7 @@
         var defaults={
             cols:[],
             rows:[],
+            actions:[],
             headClass:null,
             rowClass:null,
             num:false,
@@ -14,9 +15,25 @@
         var settings=$.extend(defaults,options)
         var cols=settings.cols;
         var rows=settings.rows;
+
+        function createRowAction(row){
+            var as=$.map(settings.actions, function (action) {
+                var className="btn-default";
+                if(!!action.className)className=action.className;
+                var a=$("<a class='btn btn-link btn-sm "+className+"' href='#' role='button'>"+action.name+"</a>");
+                if('function'==typeof action.fn)a.on('click',function(e){
+                    e.preventDefault();
+                    e.stopPropagation();
+                    action.fn(row);
+                });
+                return a;
+            });
+            return $('<td align="center">').append(as);
+        }
         var cols_ths=$.map(cols, function (col) {
             return '<th>'+col.title+'</th>';
         });
+        if(settings.actions.length>0)cols_ths.push('<td  align="center">操作</td>');
         var tr=$('<tr>');
         if ("string" == typeof settings.headClass){tr.addClass(settings.headClass);}
         if(settings.num){tr.append('<th>#</th>')}
@@ -34,9 +51,11 @@
             var tr=$('<tr>');
             if(!!rc)tr.addClass(rc);
             if(settings.num){tr.append('<th>'+(rownum+1)+'</th>')}
-            return tr.append($.map(cols, function (col) {
+            tr.append($.map(cols, function (col) {
                 return '<td>'+row[col.name]+'</td>';
             }));
+            if(settings.actions.length>0)tr.append(createRowAction(row));
+            return tr;
         });
         var tbody= $('<tbody>').append(trs);
         this.empty().append(thead).append(tbody);

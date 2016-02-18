@@ -1,5 +1,5 @@
 {
-  "code":12600,
+  "code":126000,
   "message":"成功",
   "pagination": {
     "currentPage": 2,
@@ -10,9 +10,9 @@
     "totalCount": 50,
     "totalPage": 5
   },
-  "rows":[{"name":"张三","contact":"15829856251","role":"管理员","company":"联想"},
-    {"name":"李四","contact":"15829856252","role":"管理员","company":"联想"},
-    {"name":"王五","contact":"15829856253","role":"普通用户","company":"大众"},
-    {"name":"赵六子","contact":"15829856254","role":"普通用户","company":"联想"},
-    {"name":"欧阳锋","contact":"15829856255","role":"普通用户","company":"阿里"}]
+  "rows":[{"referId":1,"name":"张三","contact":"15829856251","role":"管理员","company":"联想"},
+    {"referId":2,"name":"李四","contact":"15829856252","role":"管理员","company":"联想"},
+    {"referId":3,"name":"王五","contact":"15829856253","role":"普通用户","company":"大众"},
+    {"referId":4,"name":"赵六子","contact":"15829856254","role":"普通用户","company":"联想"},
+    {"referId":5,"name":"欧阳锋","contact":"15829856255","role":"普通用户","company":"阿里"}]
 }

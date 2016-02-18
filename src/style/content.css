@@ -123,6 +123,24 @@ body>.container,body>.topheader>.container{min-width: 1000px;}
 .detail_table td.name{
     background:#f5f5f5;
 }
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    vertical-align: middle;
+}
+.table .btn-sm{padding: 2px;}
+.quickdelete {
+    top: 1px;
+    right: 45px;
+    width: 28px;
+    height: 28px;
+    background: url(../images/quickdelete.png) no-repeat;
+    background-position: 10px 8px;
+    position: absolute;
+    display: none;
+    z-index: 3;
+}
+.quickdelete:hover {
+    background-position: 10px -26px;
+}
 
 @media (min-width: 768px) {
     .lr .panel.panel-primary {

@@ -125,12 +125,22 @@
                 <div class="panel-heading">
                     <h4 class="panel-title">用户信息</h4>
                     <br>
-                    <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" placeholder="用户名/手机号">
-                          <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">查询</button>
-                          </span>
-                    </div><!-- /input-group -->
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control" id="querykey" placeholder="用户名/手机号">
+                                  <span class="input-group-btn">
+                                      <a href="javascript:;" id="quickdelete" title="清空" class="quickdelete"></a>
+                                    <button class="btn btn-default" type="button" id="queryBtn">查询</button>
+                                  </span>
+                            </div><!-- /input-group -->
+                        </div>
+                        <div class="col-sm-3">
+                            <button class="btn btn-success btn-sm" type="button" id="createButton">新增</button>
+                        </div>
+                    </div>
+
+
                 </div>
                 <div class="panel-body panel-body-nopadding">
                     <div class="table-responsive">
@@ -149,54 +159,8 @@
                 <div class="panel-body">
                     <div class="alert alert-info" role="alert">操作描述:用户信息修改</div>
                     <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2">
-                    <div class="table-responsive">
-                        <table class="table table-hover table-condensed table-bordered detail_table" id="detail_table">
-                            <tbody>
-                            <tr>
-                                <td class="name">用户名</td>
-                                <td><input type="text" class="form-control" id="username" name="username"></td>
-                                <td>提示信息</td>
-                            </tr>
-                            <tr>
-                                <td class="name">密码</td>
-                                <td><input type="text" class="form-control" id="password" name="password"></td>
-                                <td>提示信息</td>
-                            </tr>
-                            <tr>
-                                <td class="name">联系方式</td>
-                                <td><input type="text" class="form-control" id="contact" name="contact"></td>
-                                <td>提示信息</td>
-                            </tr>
-                            <tr>
-                                <td class="name">用户类型</td>
-                                <td>
-                                    <select class="form-control" id="usertype" name="usertype">
-                                        <option>管理员</option>
-                                        <option>普通用户</option>
-                                    </select>
-                                </td>
-                                <td>提示信息</td>
-                            </tr>
-                            <tr>
-                                <td class="name">所在公司</td>
-                                <td>
-                                    <select class="form-control" id="company" name="company">
-                                        <option>联想</option>
-                                        <option>大众</option>
-                                        <option>阿里</option>
-                                    </select>
-                                </td>
-                                <td>提示信息</td>
-                            </tr>
-                            <tr>
-                                <td colspan="3" align="left">
-                                    <button type="button" class="btn btn-primary pull-left">修改</button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                        <div class="col-sm-8 col-sm-offset-2" id="detailContainer">
+                        <!--placeholder-->
                         </div>
                     </div>
                 </div>
@@ -223,26 +187,172 @@
         <p class="copyright">版权所有 ©2016 XX公司</p>
     </div>
 </footer>
-<script type="text/html" id="detail_table_template">
 
+<script type="text/html" id="detail_table_template">
+    <div class="table-responsive">
+        <table class="table table-hover table-condensed table-bordered detail_table" id="detail_table">
+            <tbody>
+            <tr>
+                <td class="name">用户名</td>
+                <td id="v_username"></td>
+            </tr>
+            <tr>
+                <td class="name">联系方式</td>
+                <td id="v_contact"></td>
+            </tr>
+            <tr>
+                <td class="name">用户类型</td>
+                <td id="v_usertype"></td>
+            </tr>
+            <tr>
+                <td class="name">所在公司</td>
+                <td id="v_company"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</script>
+<script type="text/html" id="edit_form_template">
+    <form method="post">
+        <input type="hidden" name="action" value="edit">
+    <div class="table-responsive">
+        <table class="table table-hover table-condensed table-bordered detail_table" id="edit_form">
+            <tbody>
+            <tr>
+                <td class="name">用户名</td>
+                <td><input type="text" class="form-control" id="username" name="username"></td>
+                <td>提示信息</td>
+            </tr>
+            <tr>
+                <td class="name">联系方式</td>
+                <td><input type="text" class="form-control" id="contact" name="contact"></td>
+                <td>提示信息</td>
+            </tr>
+            <tr>
+                <td class="name">用户类型</td>
+                <td>
+                    <select class="form-control" id="usertype" name="usertype">
+                        <option>管理员</option>
+                        <option>普通用户</option>
+                    </select>
+                </td>
+                <td>提示信息</td>
+            </tr>
+            <tr>
+                <td class="name">所在公司</td>
+                <td>
+                    <select class="form-control" id="company" name="company">
+                        <option>联想</option>
+                        <option>大众</option>
+                        <option>阿里</option>
+                    </select>
+                </td>
+                <td>提示信息</td>
+            </tr>
+            <tr>
+                <td colspan="3" align="left">
+                    <button type="submit" class="btn btn-primary pull-left">保持修改</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    </form>
+</script>
+<script type="text/html" id="newitem_form_template">
+    <form method="post">
+        <input type="hidden" name="action" value="new">
+    <div class="table-responsive">
+        <table class="table table-hover table-condensed table-bordered detail_table" id="newitem_form">
+            <tbody>
+            <tr>
+                <td class="name">用户名</td>
+                <td><input type="text" class="form-control" id="username" name="username"></td>
+                <td>提示信息</td>
+            </tr>
+            <tr>
+                <td class="name">密码</td>
+                <td><input type="text" class="form-control" id="password" name="password"></td>
+                <td>提示信息</td>
+            </tr>
+            <tr>
+                <td class="name">联系方式</td>
+                <td><input type="text" class="form-control" id="contact" name="contact"></td>
+                <td>提示信息</td>
+            </tr>
+            <tr>
+                <td class="name">用户类型</td>
+                <td>
+                    <select class="form-control" id="usertype" name="usertype">
+                        <option>管理员</option>
+                        <option>普通用户</option>
+                    </select>
+                </td>
+                <td>提示信息</td>
+            </tr>
+            <tr>
+                <td class="name">所在公司</td>
+                <td>
+                    <select class="form-control" id="company" name="company">
+                        <option>联想</option>
+                        <option>大众</option>
+                        <option>阿里</option>
+                    </select>
+                </td>
+                <td>提示信息</td>
+            </tr>
+            <tr>
+                <td colspan="3" align="left">
+                    <button type="submit" class="btn btn-primary pull-left">新增用户</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    </form>
 </script>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
 <script src="../js/common.js"></script>
 <script src="../js/jquery.lui.js"></script>
 <script type="text/javascript">
+
 $(document).ready(function(){
+    //列表表格数据来源
+    var url='../data/users.json';
+
+    //新增按钮响应函数，row是行数据
+    $('#createButton').click(onCreate);
+    function onCreate(){console.log('create new item');
+        showNewItemForm();
+    }
+
+    //修改按钮响应函数，row是行数据
+    function onEdit(row){console.log('edit row:'+row.referId);
+        fillEditDetailTable(row);
+    }
+
+    //删除按钮响应函数
+    function onDelete(row){console.log('delete row:'+row.referId);
+        //跳转到删除页并带上id等参数
+        window.location.href="delete_url?action=delete&referid="+row.referId;
+    }
+    //配置列表表格
     var tableOptions={
-        num:true,
+        num:false,
         cols:[{name:"name",title:"用户名"},{name:"contact",title:"联系方式"},{name:"role",title:"用户类型"},{name:"company",title:"所在公司"}],
         rowOnClick:function(row){
             fillDetailTable(row);
-        }
+        },
+        actions:[
+            {name:"修改",fn:onEdit,className:""},
+            {name:"删除",fn:onDelete,className:"btn-danger"}
+        ]
     };
-    var url='../data/users.json';
 
+    //获取列表数据后更新表格和翻页组件，并联动触发detail页更新
     function onListDataLoaded(data){
-        if(data.code=="12600") {
+        if(data.code=="126000") {
             if(data.rows.length>0) {
                 tableOptions.rows = data.rows;
                 $('#list_table').table(tableOptions);
@@ -253,21 +363,66 @@ $(document).ready(function(){
             LU.msgtips("错误："+data.message,{type:"error"});
         }
     }
+    //页面改变时重新获取数据
     function onPageChange(params){
-        var params='undefined'==typeof params||null;
+        var params=(('undefined'==typeof params)?null:params);
         getJsonData(url,params,onListDataLoaded);
     }
-    onPageChange();
 
-
-    function fillDetailTable(row){
-        var dt=$('#detail_table');
+    //绑定修改表单
+    function fillEditDetailTable(row){
+        var tpl=$($('#edit_form_template').html());
+        var dt=tpl.find('#edit_form');
         dt.find('#username').val(row.name);
         dt.find('#contact').val(row.contact);
-        dt.find('#password').val('待查');
         dt.find('#usertype').val(row.role);
         dt.find('#company').val(row.company);
+        $('#detailContainer').empty().append(tpl);
     }
+    //绑定详情表格
+    function fillDetailTable(row){
+        var tpl=$($('#detail_table_template').html());
+        var dt=tpl.find('#detail_table');
+        dt.find('#v_username').text(row.name);
+        dt.find('#v_contact').text(row.contact);
+        dt.find('#v_usertype').text(row.role);
+        dt.find('#v_company').text(row.company);
+        $('#detailContainer').empty().append(tpl);
+    }
+    //显示新增表单
+    function showNewItemForm(){
+        var tpl=$($('#newitem_form_template').html());
+        $('#detailContainer').empty().append(tpl);
+    }
+
+    //查询按钮响应函数
+    $('#queryBtn').on('click',onQuery);
+    function onQuery(){
+        var key=$('#querykey').val();
+        if(!!!key){
+            alert("请输入要查询的内容");
+            return false;
+        }
+        onPageChange({filter:key});
+    }
+    //清楚查询
+    $('#quickdelete').on('click',function(){
+        $('#querykey').val(null);
+        $(this).fadeOut();
+        onPageChange(null);
+    });
+    //搜索框事件监听
+    $('#querykey').on('keydown', function () {
+        var qd=$('#quickdelete');console.log($(this).val());
+        if($(this).val().trim().length>0){
+            qd.fadeIn();
+        }else{
+            qd.fadeOut();
+        }
+    });
+
+    //页面初始化，空参数，后台返回默认值
+    onPageChange(null);
 });
 
 </script>

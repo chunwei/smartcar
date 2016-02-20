@@ -20,10 +20,10 @@
     var map = new BMap.Map("allmap");
     var point = new BMap.Point(121.579, 29.885);
     map.centerAndZoom(point, 15);
-    var carIconG=new BMap.Icon('http://localhost:63344/baidumap/icon/car_60x30_g.png', new BMap.Size(60,30)/*,{imageSize : new BMap.Size(30,66)}*/);
-    var carIconR=new BMap.Icon('http://localhost:63344/baidumap/icon/car_60x30_r.png', new BMap.Size(60,30)/*,{imageSize : new BMap.Size(30,66)}*/);
-    var carIconY=new BMap.Icon('http://localhost:63344/baidumap/icon/car_60x30_y.png', new BMap.Size(60,30)/*,{imageSize : new BMap.Size(30,66)}*/);
-    var carIconO=new BMap.Icon('http://localhost:63344/baidumap/icon/car_30x66.png', new BMap.Size(30,66)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var carIconG=new BMap.Icon('../images/car_60x30_g.png', new BMap.Size(60,30)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var carIconR=new BMap.Icon('../images/car_60x30_r.png', new BMap.Size(60,30)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var carIconY=new BMap.Icon('../images/car_60x30_y.png', new BMap.Size(60,30)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var carIconO=new BMap.Icon('../images/car_30x66.png', new BMap.Size(30,66)/*,{imageSize : new BMap.Size(30,66)}*/);
     var icons=[carIconG,carIconR,carIconY,carIconO];
     var opts = {
         width : 200,     // 信息窗口宽度

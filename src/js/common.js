@@ -30,3 +30,14 @@ LU.msgtips = function(msg, opts){
     msg.animate({ 'top':0 }, 200);
     setTimeout(function(){ msg.animate({ 'top':-36 }, 200,function(){msg.remove();}); }, opts.timeout || 3000);
 };
+
+//比较两个简单的对象的值是否相等
+LU.equals= function(a,b){
+    if(a===b)return true;
+    if(a==b)return true;
+    try {
+        if (JSON.stringify(a) == JSON.stringify(b))return true;
+    }catch (ex){
+    }
+    return false;
+}

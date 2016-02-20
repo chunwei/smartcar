@@ -47,6 +47,9 @@ body>.container,body>.topheader>.container{min-width: 1000px;}
 .tcf .panel-heading .form-inline label{font-weight: 400}
 .tcf .panel-heading .form-inline input{width: 9em;padding: 3px;}
 .tcf .panel-heading .form-group {margin-bottom: 10px;}
+.tcf .panel-body .table-responsive {
+    max-height: 400px;
+}
 .panel {
     margin-bottom: 6px;
 }
@@ -125,6 +128,13 @@ body>.container,body>.topheader>.container{min-width: 1000px;}
 }
 .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
     vertical-align: middle;
+}
+.table-hover > tbody > tr:hover {
+    color:#666;
+}
+.table tr.selected{
+    background:#0A3365;
+    color:#fff;
 }
 .table .btn-sm{padding: 2px;}
 .quickdelete {

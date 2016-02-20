@@ -1,20 +1,24 @@
 /**
  * Created by chunwei on 2016/2/16.
  */
+//!!! must import common.js first !!!  need LU.equals function
 ;(function($){
+    window.LU=window.LU||{};
     $.fn.table=function(options){
         var defaults={
-            cols:[],
+            cols:[],//col:{name:'key in row',title:'display name'}
             rows:[],
-            actions:[],
-            headClass:null,
-            rowClass:null,
-            num:false,
+            actions:[],// action link in last col
+            headClass:null,//table head style
+            rowClass:null,//customized row style ,function(row){}
+            num:false,//display row num ?
             rowOnClick:null
         };
         var settings=$.extend(defaults,options)
         var cols=settings.cols;
         var rows=settings.rows;
+        var table=this;
+        table.currentSelectRow=null;
 
         function createRowAction(row){
             var as=$.map(settings.actions, function (action) {
@@ -50,6 +54,10 @@
             }
             var tr=$('<tr>');
             if(!!rc)tr.addClass(rc);
+            if(LU.equals(row,LU.currentSelectRow)){
+                tr.addClass('selected');
+                table.currentSelectRow=tr;
+            }
             if(settings.num){tr.append('<th>'+(rownum+1)+'</th>')}
             tr.append($.map(cols, function (col) {
                 return '<td>'+row[col.name]+'</td>';
@@ -59,8 +67,18 @@
         });
         var tbody= $('<tbody>').append(trs);
         this.empty().append(thead).append(tbody);
-        if("function" == typeof settings.rowOnClick)
-        this.off('click').on('click','tbody>tr',function(){settings.rowOnClick(rows[$(this).index()]);});
+        if("function" == typeof settings.rowOnClick) {
+            this.off('click').on('click', 'tbody>tr', function () {
+                if(!!table.currentSelectRow)table.currentSelectRow.removeClass('selected');
+                $(this).addClass('selected');
+                table.currentSelectRow= $(this);
+                var selectedRow=rows[$(this).index()];
+                settings.rowOnClick(selectedRow);
+                table.data('currentSelectRow',selectedRow);
+                window.LU.currentSelectRow=selectedRow;
+            });
+        }
+        table.data('currentSelectRow',(!!window.LU.currentSelectRow)?window.LU.currentSelectRow:rows[0]);//默认选中第一行
         return this;
     };
 
@@ -127,11 +145,45 @@
                     filter:null,
                     pagination:$.extend(settings, {currentPage: targetPage}),
                 };
+            window.LU.currentSelectRow=null;//一旦翻页就应该忘记当前页中的选中行，下一页的第一行默认为选中行
+            window.LU.pagination_params=params;
             if('function'==typeof onPageChange){
                 onPageChange(params);
             }
         }
 
         return this;
+    };
+//key-value table
+    $.fn.kvtable=function(options) {
+        var defaults={
+            cols:[],//col:{name:'key in row',title:'display name'}
+            rows:[],
+            actions:[],
+            headClass:null,
+            rowClass:null,
+            colPerRow:1,//每行显示几对key-value
+        };
+        var settings=$.extend(defaults,options)
+        var cols=settings.cols;
+        var rows=settings.rows;
+        var table=this;
+
+        var rowCount=Math.ceil(cols.length/settings.colPerRow);
+        var n=0;
+        var tbody=$('<tbody>');
+        for(var i=0;i<rowCount;i++){
+            var tr=$('<tr>');
+            for(var j=0;j<settings.colPerRow;j++) {
+                var k=n<cols.length?cols[n].title:'';
+                var v=rows[cols[n].name];
+                if('undefined'==typeof v)v='-';
+                tr.append("<td>"+k+"</td>");
+                tr.append("<td class='value'>"+v+"</td>");
+                n++;
+            }
+            tbody.append(tr);
+        }
+        return table.empty().append(tbody);
     };
 })(jQuery);

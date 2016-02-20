@@ -1,0 +1,24 @@
+{
+  "code": 126000,
+  "message": "成功",
+  "object": {
+    "maxTension": 100,
+    "busCurrent": 100,
+    "busTension": 100,
+    "carNumber": "浙5236",
+    "charge": true,
+    "current": 100,
+    "delFlag": false,
+    "gears": 2,
+    "maxBackCurrent": 0,
+    "maxOutCurrent": 2,
+    "ready": true,
+    "refrenceId": 1,
+    "rotate": 20,
+    "soc": 5,
+    "speed": 50,
+    "state": 1,
+    "tension": 100,
+    "updateTime": 45612167456165
+  }
+}

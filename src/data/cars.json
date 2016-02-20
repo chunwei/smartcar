@@ -1,0 +1,18 @@
+{
+  "code":126000,
+  "message":"成功",
+  "pagination": {
+    "currentPage": 2,
+    "hasNextPage": true,
+    "hasPreviousPage": true,
+    "pageSize": 10,
+    "startIndex": 11,
+    "totalCount": 50,
+    "totalPage": 5
+  },
+  "rows":[{"refrenceId":1,"carNumber":"浙B52668","companyCarNo":"9856251","type":"ZBJ5021XXYBEV","state":"online"},
+    {"refrenceId":2,"carNumber":"浙B56616","companyCarNo":"9856252","type":"ZBJ5021XXYBEV","state":"online"},
+    {"refrenceId":3,"carNumber":"浙B52326","companyCarNo":"9856253","type":"ZBJ5021XXYBEK","state":"online"},
+    {"refrenceId":4,"carNumber":"浙B52336","companyCarNo":"9856254","type":"ZBJ5021XXYBEK","state":"alert"},
+    {"refrenceId":5,"carNumber":"浙B52376","companyCarNo":"9856255","type":"ZBJ5021XXYBEK","state":"offline"}]
+}

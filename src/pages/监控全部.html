@@ -133,10 +133,11 @@
                     </h4>
                     <br>
                     <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" placeholder="车牌号/编号/VIN/车型/客户">
-                          <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">查询</button>
-                          </span>
+                        <input type="text" class="form-control" id="querykey" placeholder="车牌号/编号/VIN/车型/客户">
+                                  <span class="input-group-btn">
+                                      <a href="javascript:;" id="quickdelete" title="清空" class="quickdelete"></a>
+                                    <button class="btn btn-default" type="button" id="queryBtn">查询</button>
+                                  </span>
                     </div><!-- /input-group -->
                 </div>
                 <div class="panel-body panel-body-nopadding">
@@ -303,7 +304,242 @@
 </footer>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/jquery.lui.js"></script>
+<script>
+    $(document).ready(function(){
+        //列表表格数据来源
+        var url='../data/cars.json';
+        //各tab数据来源
+        $("#home").data('url','../data/carhome.json');
+        $("#profile").data('url','../data/carprofile.json');
+        $("#messages").data('url','../data/carmessages.json');
+        $("#settings").data('url','../data/carsettings.json');
+        $("#chargestatus").data('url','../data/carchargestatus.json');
+
+        //新增按钮响应函数，row是行数据
+        $('#createButton').click(onCreate);
+        function onCreate(){console.log('create new item');
+            showNewItemForm();
+        }
+
+        //修改按钮响应函数，row是行数据
+        function onEdit(row){console.log('edit row:'+row.refrenceId);
+            fillEditDetailTable(row);
+        }
+
+        //删除按钮响应函数
+        function onDelete(row){console.log('delete row:'+row.refrenceId);
+            //跳转到删除页并带上id等参数
+            window.location.href="delete_url?action=delete&refrenceId="+row.refrenceId;
+        }
+        //配置列表表格
+        var tableOptions={
+            num:true,
+            cols:[{name:"carNumber",title:"车牌号码"},{name:"companyCarNo",title:"企业车辆编号"},{name:"type",title:"车型"}],
+            rowOnClick:function(row){//表格中的行点击事件
+                refreshTabPanel(row);
+            },
+            rowClass:function(row){
+                var c;
+                switch (row.state){
+                    //case 0:c="bg-online";break;
+                    case "offline":c="bg-offline";break;
+                    case "alert":c="bg-alert";break;
+                    case "online":c="bg-online";break;
+                }
+                return c;
+            }
+        };
+
+        //获取列表数据后更新表格和翻页组件，并联动触发detail页更新
+        function onListDataLoaded(data){
+            if(data.code=="126000") {
+                if(data.rows.length>0) {
+                    tableOptions.rows = data.rows;
+                    $('#list_table').table(tableOptions);
+                    refreshTabPanel($('#list_table').data('currentSelectRow'));
+                }
+                $('#list_table_pagination').pagination(data.pagination,onPageChange);
+                $('#lastRefreshedAt').text(new Date().toLocaleTimeString());
+            }else{
+                LU.msgtips("错误："+data.message,{type:"error"});
+            }
+        }
+        //页面改变时重新获取数据
+        function onPageChange(params){
+            var params=(('undefined'==typeof params)?null:params);
+            getJsonData(url,params,onListDataLoaded);
+        }
+
+        //绑定修改表单
+        function fillEditDetailTable(row){
+            var tpl=$($('#edit_form_template').html());
+            var dt=tpl.find('#edit_form');
+            dt.find('#username').val(row.name);
+            dt.find('#contact').val(row.contact);
+            dt.find('#usertype').val(row.role);
+            dt.find('#company').val(row.company);
+            $('#detailContainer').empty().append(tpl);
+        }
+        //重新获取数据，更新对应的tabpanel
+        function refreshTabPanel(row,panel){
+            var tabpanel=null;
+            if(arguments.length<2){
+                tabpanel=$("div[role=tabpanel].active");
+            }else{
+                tabpanel=panel;
+            }
+            if(!!!tabpanel)return false;
+            var url=tabpanel.data('url');
+            getJsonData(url,{refrenceId:row.refrenceId},function(data){
+                if(data.code=="126000") {
+                    fillDetailTable(data,tabpanel);
+                }else{
+                    LU.msgtips("错误："+data.message,{type:"error"});
+                }
+            })
+        }
+        //绑定详情表格
+        function fillDetailTable(data,tabpanel){
+            switch (tabpanel[0].id){
+                case 'home':fillHome(data);break;
+                case 'profile':fillProfile(data);break;
+                case 'messages':fillMessages(data);break;
+                case 'settings':fillSettings(data);break;
+                case 'chargestatus':fillChargestatus(data);break;
+            }
+        }
+        //更新仪表盘信息
+        function fillHome(data){
+            var r=data.object;
+            var values=[];
+            values[0]= r.speed;
+            values[1]= r.rotate;
+            values[2]= r.soc;// 注意：这个是剩余电量值，要根据总电量值配置图表
+            Gauge.updateAll(values);
+        }
+        //更新整车信息
+        function fillProfile(data){
+            //注入新数据，配置后自动绑定
+            var kvOptions={
+                colPerRow:3,
+                cols:[{"name":"k1","title":"单体最高电压(V)"},{"name":"k2","title":"电池温度采集点最大值(V)"},
+                    {"name":"k3","title":"最高电压单体节点"},{"name":"k4","title":"最低电压单体节点"},
+                    {"name":"k5","title":"电池组平均温度(℃)"},{"name":"k6","title":"电池组最高温度(℃)"},
+                    {"name":"k7","title":"电池组最低温度(℃)"},{"name":"k8","title":"最高温度串号"},
+                    {"name":"k9","title":"最低温度串号"},{"name":"k10","title":"电池组循环充放电次数"},
+                    {"name":"k11","title":"SOH"},{"name":"k12","title":"电机转速(rpm)"},
+                    {"name":"k13","title":"正极绝缘阻值(KΩ)"},{"name":"k14","title":"负极绝缘阻值(KΩ)"},
+                    {"name":"k15","title":"蜂鸣器开关"},{"name":"k16","title":"电机运行方向"},
+                    {"name":"k17","title":"控制模式"},{"name":"k18","title":"工作模式"},
+                    {"name":"k19","title":"放电继电器控制"},{"name":"k20","title":"放电继电器"},
+                    {"name":"k21","title":"预充继电器"},{"name":"k22","title":"充电继电器"},
+                    {"name":"k23","title":"负极继电器"},{"name":"k24","title":"PTC"}
+                ],
+                rows:data.object
+            }
+            $("#profile_table").kvtable(kvOptions);
+        }
+        //更新故障报警
+        function fillMessages(data){
+            //注入新数据，配置后自动绑定
+            var kvOptions={
+                colPerRow:3,
+                cols:[{"name":"k1","title":"电池温度过高"},{"name":"k2","title":"电池温度过低"},
+                    {"name":"k3","title":"电池绝缘强度"},{"name":"k4","title":"电池欠压"},
+                    {"name":"k5","title":"电池过压"},{"name":"k6","title":"电池过流"},
+                    {"name":"k7","title":"单体压差过大"},{"name":"k8","title":"电池预充"},
+                    {"name":"k9","title":"电池通信"},{"name":"k10","title":"电池能量低"},
+                    {"name":"k11","title":"绝缘过低"},{"name":"k12","title":"系统故障"},
+                    {"name":"k13","title":"电机故障"},{"name":"k14","title":"电池故障"},
+                    {"name":"k15","title":"电机状态"},{"name":"k16","title":"电机过温"},
+                    {"name":"k17","title":"电机控制器过温"},{"name":"k18","title":"电机母线过压"},
+                    {"name":"k19","title":"电机母线欠压"},{"name":"k20","title":"电机过流"},
+                    {"name":"k21","title":"电机通讯故障"},{"name":"k22","title":"电机超速"},
+                    {"name":"k23","title":"IGBT"},{"name":"k24","title":"电机传感器"}],
+                rows:data.object
+            }
+            $("#messages_table").kvtable(kvOptions);
+        }
+        //更新电机状态
+        function fillSettings(data){
+            //注入新数据，配置后自动绑定
+            var kvOptions={
+                colPerRow:2,
+                cols:[{name:"k1",title:"电池欠压"},{name:"k2",title:"电池过压"},
+                    {name:"k3",title:"电池过流"},{name:"k4",title:"电池通信"},
+                    {name:"k5",title:"绝缘过低"},{name:"k6",title:"电池过压"},
+                    {name:"k7",title:"电池故障"},{name:"k8",title:"电机故障"},
+                    {name:"k9",title:"电机控制器过温"},{name:"k10",title:"电机母线欠压"},
+                    {name:"k11",title:"电机过流"},{name:"k12",title:"电机超速"},
+                ],
+                rows:data.object
+            }
+            $("#settings_table").kvtable(kvOptions);
+        }
+        //更新充电信息
+        function fillChargestatus(data){
+            var table=$("#chargestatus_table");
+            //reset all value
+            table.find('td.value').text('-');
+            //注入新数据,  手工绑定
+            table.find('td#maxTension').text(data.object.maxTension);
+
+        }
+        //tab切换事件
+        $("ul[role=tablist]>li").on('click', function (e) {
+            if($(this).hasClass('active'))return false;
+            var row=$('#list_table').data('currentSelectRow');
+            var tabPanel=$('#'+$(this).find('a[role=tab]').attr('aria-controls'));
+            refreshTabPanel(row,tabPanel);
+        });
+
+        //显示新增表单
+        function showNewItemForm(){
+            var tpl=$($('#newitem_form_template').html());
+            $('#detailContainer').empty().append(tpl);
+        }
+
+        //查询按钮响应函数
+        $('#queryBtn').on('click',onQuery);
+        function onQuery(){
+            var key=$('#querykey').val();
+            if(!!!key){
+                alert("请输入要查询的内容");
+                return false;
+            }
+            onPageChange({filter:key});
+        }
+        //清楚查询
+        $('#quickdelete').on('click',function(){
+            $('#querykey').val(null);
+            $(this).fadeOut();
+            onPageChange(null);
+        });
+        //搜索框事件监听
+        $('#querykey').on('keydown', function () {
+            var qd=$('#quickdelete');console.log($(this).val());
+            if($(this).val().trim().length>0){
+                qd.fadeIn();
+            }else{
+                qd.fadeOut();
+            }
+        });
+
+        //页面初始化，空参数，后台返回默认值
+        onPageChange(null);
+
+        //每20秒更新一次数据
+        var timer=setInterval(function () {
+            onPageChange(window.LU.pagination_params);
+        }, 20000);
+    });
+
+
+</script>
 <script type="text/javascript">
+    // 百度地图API功能
     var map = new BMap.Map("map");
     map.centerAndZoom(new BMap.Point(121.579, 29.885), 11);
     map.addControl(new BMap.NavigationControl());
@@ -311,6 +547,67 @@
     map.addControl(new BMap.OverviewMapControl());
     map.addControl(new BMap.MapTypeControl());
     map.setCurrentCity("宁波"); // 仅当设置城市信息时，MapTypeControl的切换功能才能可用
+
+    var carIconG=new BMap.Icon('http://localhost:63344/baidumap/icon/car_60x30_g.png', new BMap.Size(60,30)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var carIconR=new BMap.Icon('http://localhost:63344/baidumap/icon/car_60x30_r.png', new BMap.Size(60,30)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var carIconY=new BMap.Icon('http://localhost:63344/baidumap/icon/car_60x30_y.png', new BMap.Size(60,30)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var carIconO=new BMap.Icon('http://localhost:63344/baidumap/icon/car_30x66.png', new BMap.Size(30,66)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var icons=[carIconG,carIconR,carIconY,carIconO];
+    var opts = {
+        width : 200,     // 信息窗口宽度
+        height: 100,     // 信息窗口高度
+        offset: new BMap.Size(40,-30),//信息窗口偏移
+        title : "车辆详情" , // 信息窗口标题
+        enableMessage:true,//设置允许信息窗发送短息
+        message:"车辆详情。。。。。"
+    };
+    var markers=[];
+    // 编写自定义函数,创建标注
+    function addMarker(point,direct){
+        var label = new BMap.Label("浙B88666",{offset:new BMap.Size(0,-20)});
+        label.setStyle({border:'none',borderRadius:'5px',boxShadow: '0 1px 4px rgba(0,0,0,0.3)',padding:'5px',color:'#fff',backgroundColor:'rgba(0, 137, 243, 0.9)'});
+        var marker = new BMap.Marker(point,{icon:icons[Math.floor(Math.random()*4)]});
+        marker.setLabel(label);
+        marker.setRotation(direct);
+        var content="详情写在这里，<br>可以包含html标签";
+        marker.addEventListener("click", function(e){
+            openInfo(content,e);
+        });
+        map.addOverlay(marker);
+        markers.push(marker);
+    }
+    //开启信息窗口
+    function openInfo(content,e){
+        var p = e.target;
+        var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+        var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象
+        map.openInfoWindow(infoWindow,point); //开启信息窗口
+    }
+
+    // 随机向地图添加10个标注
+    var bounds = map.getBounds();
+    var sw = bounds.getSouthWest();
+    var ne = bounds.getNorthEast();
+    var lngSpan = Math.abs(sw.lng - ne.lng);
+    var latSpan = Math.abs(ne.lat - sw.lat);
+
+    for (var k = 0; k < 10; k ++) {
+        var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
+        addMarker(point,360* Math.random());
+    }
+    function resetMkPoint(){
+        for (var i = 0; i < markers.length; i++) {
+            var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
+            markers[i].setPosition(point);
+            markers[i].setRotation(360* Math.random());
+        }
+        map.openInfoWindow(map.getInfoWindow(),point);
+    }
+    function run(){
+        resetMkPoint();
+        setTimeout(run,20000);
+    }
+    setTimeout(run,3000);
 </script>
 </body>
 </html>

@@ -328,14 +328,14 @@ $(document).ready(function(){
     }
 
     //修改按钮响应函数，row是行数据
-    function onEdit(row){console.log('edit row:'+row.referId);
+    function onEdit(row){console.log('edit row:'+row.refrenceId);
         fillEditDetailTable(row);
     }
 
     //删除按钮响应函数
-    function onDelete(row){console.log('delete row:'+row.referId);
+    function onDelete(row){console.log('delete row:'+row.refrenceId);
         //跳转到删除页并带上id等参数
-        window.location.href="delete_url?action=delete&referid="+row.referId;
+        window.location.href="delete_url?action=delete&refrenceId="+row.refrenceId;
     }
     //配置列表表格
     var tableOptions={

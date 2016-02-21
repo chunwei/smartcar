@@ -73,7 +73,7 @@
                 $(this).addClass('selected');
                 table.currentSelectRow= $(this);
                 var selectedRow=rows[$(this).index()];
-                settings.rowOnClick(selectedRow);
+                settings.rowOnClick(selectedRow,$(this),$(this).index());
                 table.data('currentSelectRow',selectedRow);
                 window.LU.currentSelectRow=selectedRow;
             });

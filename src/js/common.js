@@ -40,4 +40,16 @@ LU.equals= function(a,b){
     }catch (ex){
     }
     return false;
+};
+
+//元素在数组中的位置
+if(!Array.prototype.indexOfByValue){
+    Array.prototype.indexOfByValue = function(el){
+        for (var i=0,n=this.length; i<n; i++){
+            if (LU.equals(this[i], el)){
+                return i;
+            }
+        }
+        return -1;
+    }
 }

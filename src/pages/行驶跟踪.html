@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../style/navbar-gray.css"/>
     <link rel="stylesheet" href="../style/content.css"/>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=rwAvLti2hTXN11t1jiipnrlw"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/library/LuShu/1.2/src/LuShu_min.js"></script>
 </head>
 <body>
 <header class="topheader">
@@ -181,14 +182,69 @@
 </footer>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/common.js"></script>
 <script type="text/javascript">
-    var map = new BMap.Map("map");
-    map.centerAndZoom(new BMap.Point(116.404, 39.915), 11);
-    map.addControl(new BMap.NavigationControl());
-    map.addControl(new BMap.ScaleControl());
-    map.addControl(new BMap.OverviewMapControl());
-    map.addControl(new BMap.MapTypeControl());
-    map.setCurrentCity("北京"); // 仅当设置城市信息时，MapTypeControl的切换功能才能可用
+    $(document).ready(function() {
+        //数据来源
+        var url='../data/lushupois.json';
+
+        // 百度地图API功能
+        var map = new BMap.Map("map");
+        map.centerAndZoom(new BMap.Point(121.579, 29.885), 11);
+        map.addControl(new BMap.NavigationControl());
+        map.addControl(new BMap.ScaleControl());
+        map.addControl(new BMap.OverviewMapControl());
+        map.addControl(new BMap.MapTypeControl());
+        map.setCurrentCity("宁波"); // 仅当设置城市信息时，MapTypeControl的切换功能才能可用
+
+        var lushuTitle='';
+        $('#carnumber').on('change',function(){
+            console.log($(this).val());
+            lushuTitle=$(this).val()
+            var params={filter:lushuTitle};
+            onSelectChange(params);
+        });
+        $('#enterprisecarid').on('change',function(){
+            console.log($(this).val());
+            lushuTitle=$(this).val()
+            var params={filter:lushuTitle};
+            onSelectChange(params);
+        });
+
+
+        function onSelectChange(params){
+            getJsonData(url,params,onDataLoaded);
+
+        }
+        function onDataLoaded(data){
+            if(data.code=="126000") {
+                var arrPois=data.arrPois.map(function (p) {
+                    return new BMap.Point(p.lng, p.lat);
+                })
+                addLuShu(arrPois)
+            }else{
+                LU.msgtips("错误："+data.message,{type:"error"});
+            }
+        }
+        function addLuShu(arrPois) {
+            map.clearOverlays();
+            map.addOverlay(new BMap.Polyline(arrPois, {strokeColor: '#ff0000'}));
+            map.setViewport(arrPois);
+            var lushu = new BMapLib.LuShu(map, arrPois, {
+                defaultContent: lushuTitle,//"从天安门到百度大厦"
+                autoView: true,//是否开启自动视野调整，如果开启那么路书在运动过程中会根据视野自动调整
+                icon: new BMap.Icon('../images/car_60x30_g.png', new BMap.Size(60,30)/*,{imageSize : new BMap.Size(30,66)}*/),
+                speed: 2800,//移动速度，单位米/秒, 2800大约是100km/h的10 倍速快进
+                enableRotation: true,//是否设置marker随着道路的走向进行旋转
+                landmarkPois: []
+            });
+            lushu.start();
+        }
+
+        //初始化,默认选第一个值
+        lushuTitle=$('#carnumber').val();
+        onSelectChange({filter:lushuTitle});
+    });
 </script>
 </body>
 </html>

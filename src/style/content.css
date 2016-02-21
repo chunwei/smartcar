@@ -151,7 +151,9 @@ body>.container,body>.topheader>.container{min-width: 1000px;}
 .quickdelete:hover {
     background-position: 10px -26px;
 }
-
+label.BMapLabel {
+    max-width: inherit;
+}
 @media (min-width: 768px) {
     .lr .panel.panel-primary {
         margin-right: -15px;

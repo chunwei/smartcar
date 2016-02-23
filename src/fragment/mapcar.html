@@ -34,7 +34,7 @@
         message:"车辆详情。。。。。"
     };
     var markers=[];
-    // 编写自定义函数,创建标注
+    // 创建单个标注
     function addMarker(point,direct){
     var label = new BMap.Label("浙B88666",{offset:new BMap.Size(0,-20)});
         label.setStyle({border:'none',borderRadius:'5px',boxShadow: '0 1px 4px rgba(0,0,0,0.3)',padding:'5px',color:'#fff',backgroundColor:'rgba(0, 137, 243, 0.9)'});
@@ -62,11 +62,11 @@
     var ne = bounds.getNorthEast();
     var lngSpan = Math.abs(sw.lng - ne.lng);
     var latSpan = Math.abs(ne.lat - sw.lat);
-
     for (var k = 0; k < 10; k ++) {
         var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
         addMarker(point,360* Math.random());
     }
+    //刷新车辆标注位置
     function resetMkPoint(){
         for (var i = 0; i < markers.length; i++) {
             var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
@@ -77,7 +77,7 @@
     }
     function run(){
         resetMkPoint();
-        setTimeout(run,10000);
+        setTimeout(run,20000);//间隔20秒刷新一次
     }
-    setTimeout(run,3000);
+    setTimeout(run,20000);
 </script>

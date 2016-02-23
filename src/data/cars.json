@@ -1,0 +1,24 @@
+{
+  "code":126000,
+  "message":"成功",
+  "pagination": {
+    "currentPage": 2,
+    "hasNextPage": true,
+    "hasPreviousPage": true,
+    "pageSize": 10,
+    "startIndex": 11,
+    "totalCount": 50,
+    "totalPage": 5
+  },
+  "rows":[{"refrenceId":1,"carNumber":"浙B52668","companyCarNo":"9856251","type":"ZBJ5021XXYBEV","state":"online","lng":121.20749317016134,"lat":30.164525889931223,"heading":35},
+    {"refrenceId":2,"carNumber":"浙B56616","companyCarNo":"9856252","type":"ZBJ5021XXYBEV","state":"online","lng":121.40015002506021,"lat":30.006483824410708,"heading":90},
+    {"refrenceId":3,"carNumber":"浙B52326","companyCarNo":"9856253","type":"ZBJ5021XXYBEK","state":"online","lng":121.39688221004157,"lat":29.764604902556968,"heading":135},
+    {"refrenceId":4,"carNumber":"浙B52336","companyCarNo":"9856254","type":"ZBJ5021XXYBEK","state":"alert","lng":121.54384004487416,"lat":29.90021698455537,"heading":235},
+    {"refrenceId":5,"carNumber":"浙B52376","companyCarNo":"9856255","type":"ZBJ5021XXYBEK","state":"offline","lng":121.62841091380365,"lat":29.99451895791382,"heading":180},
+    {"refrenceId":6,"carNumber":"浙B72668","companyCarNo":"9856261","type":"ZBJ5022XXYBEV","state":"online","lng":121.0493153550414,"lat":30.17820553243805,"heading":270},
+    {"refrenceId":7,"carNumber":"浙B86616","companyCarNo":"9856262","type":"ZBJ5022XXYBEV","state":"online","lng":121.58366170881685,"lat":29.780143181704037,"heading":60},
+    {"refrenceId":8,"carNumber":"浙B82326","companyCarNo":"9856263","type":"ZBJ5022XXYBEK","state":"online","lng":121.77020989254537,"lat":29.981531465984077,"heading":120},
+    {"refrenceId":9,"carNumber":"浙B82336","companyCarNo":"9856264","type":"ZBJ5022XXYBEK","state":"alert","lng":121.2707473706349,"lat":30.03097973845792,"heading":88},
+    {"refrenceId":10,"carNumber":"浙B62376","companyCarNo":"9856265","type":"ZBJ5022XXYBEK","state":"offline","lng":121.72656354231147,"lat":29.85803317544526,"heading":135}
+  ]
+}

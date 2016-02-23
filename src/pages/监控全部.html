@@ -133,139 +133,22 @@
                     </h4>
                     <br>
                     <div class="input-group input-group-sm">
-                        <input type="text" class="form-control" placeholder="车牌号/编号/VIN/车型/客户">
-                          <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">查询</button>
-                          </span>
+                        <input type="text" class="form-control" id="querykey" placeholder="车牌号/编号/VIN/车型/客户">
+                                  <span class="input-group-btn">
+                                      <a href="javascript:;" id="quickdelete" title="清空" class="quickdelete"></a>
+                                    <button class="btn btn-default" type="button" id="queryBtn">查询</button>
+                                  </span>
                     </div><!-- /input-group -->
                 </div>
                 <div class="panel-body panel-body-nopadding">
                     <div class="table-responsive">
-                        <table class="table table-hover table-condensed table-bordered">
-                            <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>heading</th>
-                                <th>heading</th>
-                                <th>heading</th>
-                                <th>heading</th>
-                                <th>heading</th>
-                                <th>heading</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr class="bg-online">
-                                <th scope="row">1</th>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                            </tr>
-                            <tr class="bg-online">
-                                <th scope="row">2</th>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                            </tr>
-                            <tr class="bg-offline">
-                                <th scope="row">3</th>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                            </tr>
-                            <tr class="bg-online">
-                                <th scope="row">4</th>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                            </tr>
-                            <tr class="bg-alert">
-                                <th scope="row">5</th>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                            </tr>
-                            <tr class="bg-alert">
-                                <th scope="row">6</th>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">7</th>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                            </tr>
-                            <tr class="bg-online">
-                                <th scope="row">8</th>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">9</th>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">10</th>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                                <td>cell</td>
-                            </tr>
-                            </tbody>
+                        <table id="list_table" class="table table-hover table-condensed table-bordered">
                         </table>
                     </div>
+                    每20秒更新一次，最后更新时间：<span id="lastRefreshedAt"></span>
                 </div>
                 <div class="panel-footer">
-                    <nav>
-                        <ul class="pagination pagination-sm">
-                            <li><a href="#">首页</a></li>
-                            <li><a href="#">上一页</a></li>
-                            <li><a href="#">下一页</a></li>
-                            <li><a href="#">尾页</a></li>
-                        </ul>
-                        <div class="input-group input-group-sm pagergroup">
-                            <span class="input-group-addon">共5页</span>
-                            <select class="form-control" id="whichpage">
-                                <option>第1页</option>
-                                <option>第2页</option>
-                                <option>第3页</option>
-                                <option>第4页</option>
-                                <option>第5页</option>
-                            </select>
-                        </div>
+                    <nav id="list_table_pagination">
                     </nav>
                 </div>
             </div>
@@ -303,7 +186,10 @@
 </footer>
 <script src="../js/jquery.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/jquery.lui.js"></script>
 <script type="text/javascript">
+    // 百度地图API功能
     var map = new BMap.Map("map");
     map.centerAndZoom(new BMap.Point(121.579, 29.885), 11);
     map.addControl(new BMap.NavigationControl());
@@ -311,6 +197,214 @@
     map.addControl(new BMap.OverviewMapControl());
     map.addControl(new BMap.MapTypeControl());
     map.setCurrentCity("宁波"); // 仅当设置城市信息时，MapTypeControl的切换功能才能可用
+
+    var carIconG=new BMap.Icon('../images/car_60x30_g.png', new BMap.Size(60,30)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var carIconR=new BMap.Icon('../images/car_60x30_r.png', new BMap.Size(60,30)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var carIconY=new BMap.Icon('../images/car_60x30_y.png', new BMap.Size(60,30)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var carIconO=new BMap.Icon('../images/car_30x66.png', new BMap.Size(30,66)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var icons=[carIconG,carIconR,carIconY,carIconO];
+    var opts = {
+        width : 200,     // 信息窗口宽度
+        height: 100,     // 信息窗口高度
+        offset: new BMap.Size(40,-30),//信息窗口偏移
+        title : "车辆详情" , // 信息窗口标题
+        enableMessage:true,//设置允许信息窗发送短息
+        message:"车辆详情。。。。。"
+    };
+    var markers=[];
+    // 编写自定义函数,创建标注
+    function addMarker(point,direct){
+        var label = new BMap.Label("浙B88666",{offset:new BMap.Size(0,-20)});
+        label.setStyle({maxWidth:'auto',border:'none',borderRadius:'5px',boxShadow: '0 1px 4px rgba(0,0,0,0.3)',padding:'5px',color:'#fff',backgroundColor:'rgba(0, 137, 243, 0.9)'});
+        var marker = new BMap.Marker(point,{icon:icons[Math.floor(Math.random()*4)]});
+        marker.setLabel(label);
+        marker.setRotation(direct);
+        var content="详情写在这里，<br>可以包含html标签";
+        marker.addEventListener("click", function(e){
+            openInfo(content,e);
+        });
+        map.addOverlay(marker);
+        markers.push(marker);
+    }
+    //开启信息窗口
+    function openInfo(content,e){
+        var p = e.target;
+        var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+        var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象
+        map.openInfoWindow(infoWindow,point); //开启信息窗口
+    }
+
+    // 随机向地图添加10个标注
+    var bounds = map.getBounds();
+    var sw = bounds.getSouthWest();
+    var ne = bounds.getNorthEast();
+    var lngSpan = Math.abs(sw.lng - ne.lng);
+    var latSpan = Math.abs(ne.lat - sw.lat);
+    function addRandomMarkers(){
+        for (var k = 0; k < 10; k ++) {
+            var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
+            addMarker(point,360* Math.random());
+        }
+    }
+    //根据获取的points初始化车辆位置,参数：{经度，纬度，车头朝向}
+    //rows =[{...,lng,lat,heading},{...,lng,lat,heading}...]
+    function addMarkers(rows){
+        markers=[];//清空先
+        map.clearOverlays();
+        for (var k = 0; k < rows.length; k ++) {
+            addMarker(rows[k]);
+        }
+        map.setViewport(markers.map(function(mk){return mk.point}));
+    }
+    // 编写自定义函数,创建标注
+    function addMarker(row){
+        var point = new BMap.Point(row.lng , row.lat);
+        var label = new BMap.Label(row.carNumber,{offset:new BMap.Size(0,-20)});
+        label.setStyle({maxWidth:'auto',border:'none',borderRadius:'5px',boxShadow: '0 1px 4px rgba(0,0,0,0.3)',padding:'5px',color:'#fff',backgroundColor:'rgba(0, 137, 243, 0.9)'});
+        var marker = new BMap.Marker(point,{icon:icons[Math.floor(Math.random()*4)]});
+        marker.setLabel(label);
+        marker.setRotation(row.heading);
+
+        marker.addEventListener("click", function(e){
+            openInfoWindow(row, e.target.getPosition());
+        });
+        map.addOverlay(marker);
+        markers.push(marker);
+    }
+    //开启信息窗口
+    function openInfoWindow(row,point){
+        var content=getInfoWindownContent(row);
+        var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象
+        map.openInfoWindow(infoWindow,point); //开启信息窗口
+    }
+    function getInfoWindownContent(row){
+        return "详情写在这里，<br>可以包含html标签,<br> 可从row信息中取得如："+row.carNumber;
+    }
+    //更新车辆位置
+    function resetMkPoint(){
+        for (var i = 0; i < markers.length; i++) {
+            var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
+            markers[i].setPosition(point);
+            markers[i].setRotation(360* Math.random());
+        }
+        map.openInfoWindow(map.getInfoWindow(),point);
+    }
+    //测试用
+/*    function run(){
+        resetMkPoint();
+        setTimeout(run,30000);
+    }
+    addRandomMarkers();
+    setTimeout(run,3000);*/
 </script>
+<script>
+    $(document).ready(function(){
+        //列表表格数据来源
+        var url='../data/cars.json';
+
+        //新增按钮响应函数，row是行数据
+        $('#createButton').click(onCreate);
+        function onCreate(){console.log('create new item');
+            showNewItemForm();
+        }
+
+        //修改按钮响应函数，row是行数据
+        function onEdit(row){console.log('edit row:'+row.refrenceId);
+            fillEditDetailTable(row);
+        }
+
+        //删除按钮响应函数
+        function onDelete(row){console.log('delete row:'+row.refrenceId);
+            //跳转到删除页并带上id等参数
+            window.location.href="delete_url?action=delete&refrenceId="+row.refrenceId;
+        }
+        //配置列表表格
+        var tableOptions={
+            num:true,
+            cols:[{name:"carNumber",title:"车牌号码"},{name:"companyCarNo",title:"企业车辆编号"},{name:"type",title:"车型"}],
+            rowOnClick:function(row,$tr,rowid){//表格中的行点击事件
+                openInfoWindow(row,markers[rowid].getPosition());
+            },
+            rowClass:function(row){
+                var c;
+                switch (row.state){
+                    //case 0:c="bg-online";break;
+                    case "offline":c="bg-offline";break;
+                    case "alert":c="bg-alert";break;
+                    case "online":c="bg-online";break;
+                }
+                return c;
+            }
+        };
+
+        //获取列表数据后更新表格和翻页组件，并联动触发detail页更新
+        function onListDataLoaded(data){
+            if(data.code=="126000") {
+                if(data.rows.length>0) {
+                    tableOptions.rows = data.rows;
+                    $('#list_table').table(tableOptions);
+                    refreshCarMap(data.rows);
+                    var row=$('#list_table').data('currentSelectRow');
+                    var rowid=Math.max(0,data.rows.indexOfByValue(row));
+                    openInfoWindow(row,markers[rowid].getPosition());
+                }
+                $('#list_table_pagination').pagination(data.pagination,onPageChange);
+                $('#lastRefreshedAt').text(new Date().toLocaleTimeString());
+            }else{
+                LU.msgtips("错误："+data.message,{type:"error"});
+            }
+        }
+        //刷新车辆在地图上的位置
+        function refreshCarMap(rows){
+            /*var pois=$.map(rows, function (row) {
+                return {lng:row.lng,lat:row.lat,heading:row.heading};
+            });*/
+            addMarkers(rows);
+        }
+        //页面改变时重新获取数据
+        function onPageChange(params){
+            var params=(('undefined'==typeof params)?null:params);
+            getJsonData(url,params,onListDataLoaded);
+        }
+
+
+        //查询按钮响应函数
+        $('#queryBtn').on('click',onQuery);
+        function onQuery(){
+            var key=$('#querykey').val();
+            if(!!!key){
+                alert("请输入要查询的内容");
+                return false;
+            }
+            onPageChange({filter:key});
+        }
+        //清除查询
+        $('#quickdelete').on('click',function(){
+            $('#querykey').val(null);
+            $(this).fadeOut();
+            onPageChange(null);
+        });
+        //搜索框事件监听
+        $('#querykey').on('keydown', function () {
+            var qd=$('#quickdelete');console.log($(this).val());
+            if($(this).val().trim().length>0){
+                qd.fadeIn();
+            }else{
+                qd.fadeOut();
+            }
+        });
+
+        //页面初始化，空参数，后台返回默认值
+        onPageChange(null);
+
+        //每20秒更新一次数据
+        var timer=setInterval(function () {
+            onPageChange(window.LU.pagination_params);
+        }, 20000);
+    });
+
+
+</script>
+
 </body>
 </html>

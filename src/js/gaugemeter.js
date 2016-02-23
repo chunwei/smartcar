@@ -1,11 +1,12 @@
 /**
  * Created by chunwei on 2016/2/14.
  */
+var Gauge=Gauge||{};
 $(function () {
 
-    $('#gauge').highcharts({
-
+    Gauge.speedmeter = new Highcharts.Chart({
             chart: {
+                renderTo : "gauge",  // 注意这里一定是 ID 选择器
                 type: 'gauge',
                 plotBackgroundColor: null,
                 plotBackgroundImage: null,
@@ -96,7 +97,7 @@ $(function () {
                 }
             }]
 
-        },
+        }/*,
         // Add some life
         function (chart) {
             if (!chart.renderer.forExport) {
@@ -114,11 +115,11 @@ $(function () {
 
                 }, 3000);
             }
-        });
+        }*/);
 
-    $('#gauge1').highcharts({
-
+    Gauge.tachometer = new Highcharts.Chart({
             chart: {
+                renderTo : "gauge1",// 注意这里一定是 ID 选择器
                 type: 'gauge',
                 plotBackgroundColor: null,
                 plotBackgroundImage: null,
@@ -184,7 +185,7 @@ $(function () {
                     rotation: 'auto'
                 },
                 title: {
-                    text: 'km/h'
+                    text: '100r/min'
                 },
                 plotBands: [{
                     from: 0,
@@ -205,11 +206,11 @@ $(function () {
                 name: 'Speed',
                 data: [10],
                 tooltip: {
-                    valueSuffix: ' 100r/min'
+                    valueSuffix: '00r/min'
                 }
             }]
 
-        },
+        }/*,
         // Add some life
         function (chart) {
             if (!chart.renderer.forExport) {
@@ -227,10 +228,10 @@ $(function () {
 
                 }, 3000);
             }
-        });
-
-    $('#gauge2').highcharts({
+        }*/);
+    Gauge.socmeter = new Highcharts.Chart({
             chart: {
+                renderTo:"gauge2",
                 type: 'column'
             },
             title: {
@@ -264,7 +265,7 @@ $(function () {
                 name: '未用电量',
                 data: [6]
             }]
-        },
+        }/*,
         function (chart) {
             if (!chart.renderer.forExport) {
                 setInterval(function () {
@@ -281,5 +282,11 @@ $(function () {
 
                 }, 3000);
             }
-        });
+        }*/);
+
+    Gauge.updateAll= function (values) {
+        Gauge.speedmeter.series[0].points[0].update(values[0]);
+        Gauge.tachometer.series[0].points[0].update(values[1]);
+        Gauge.socmeter.series[0].points[0].update(values[2]);
+    }
 });

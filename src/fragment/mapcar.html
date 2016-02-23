@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+        body, html,#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;font-family:"微软雅黑";}
+        #l-map{height:100%;width:78%;float:left;border-right:2px solid #bcbcbc;}
+        #r-result{height:100%;width:20%;float:left;}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=rwAvLti2hTXN11t1jiipnrlw"></script>
+    <title>添加多个标注点</title>
+</head>
+<body>
+<div id="allmap"></div>
+</body>
+</html>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(121.579, 29.885);
+    map.centerAndZoom(point, 15);
+    var carIconG=new BMap.Icon('../images/car_60x30_g.png', new BMap.Size(60,30)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var carIconR=new BMap.Icon('../images/car_60x30_r.png', new BMap.Size(60,30)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var carIconY=new BMap.Icon('../images/car_60x30_y.png', new BMap.Size(60,30)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var carIconO=new BMap.Icon('../images/car_30x66.png', new BMap.Size(30,66)/*,{imageSize : new BMap.Size(30,66)}*/);
+    var icons=[carIconG,carIconR,carIconY,carIconO];
+    var opts = {
+        width : 200,     // 信息窗口宽度
+        height: 100,     // 信息窗口高度
+        offset: new BMap.Size(40,-30),//信息窗口偏移
+        title : "车辆详情" , // 信息窗口标题
+        enableMessage:true,//设置允许信息窗发送短息
+        message:"车辆详情。。。。。"
+    };
+    var markers=[];
+    // 编写自定义函数,创建标注
+    function addMarker(point,direct){
+    var label = new BMap.Label("浙B88666",{offset:new BMap.Size(0,-20)});
+        label.setStyle({border:'none',borderRadius:'5px',boxShadow: '0 1px 4px rgba(0,0,0,0.3)',padding:'5px',color:'#fff',backgroundColor:'rgba(0, 137, 243, 0.9)'});
+        var marker = new BMap.Marker(point,{icon:icons[Math.floor(Math.random()*4)]});
+        marker.setLabel(label);
+        marker.setRotation(direct);
+        var content="详情写在这里，<br>可以包含html标签";
+        marker.addEventListener("click", function(e){
+            openInfo(content,e);
+        });
+        map.addOverlay(marker);
+        markers.push(marker);
+    }
+    //开启信息窗口
+    function openInfo(content,e){
+        var p = e.target;
+        var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+        var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象
+        map.openInfoWindow(infoWindow,point); //开启信息窗口
+    }
+
+    // 随机向地图添加10个标注
+    var bounds = map.getBounds();
+    var sw = bounds.getSouthWest();
+    var ne = bounds.getNorthEast();
+    var lngSpan = Math.abs(sw.lng - ne.lng);
+    var latSpan = Math.abs(ne.lat - sw.lat);
+
+    for (var k = 0; k < 10; k ++) {
+        var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
+        addMarker(point,360* Math.random());
+    }
+    function resetMkPoint(){
+        for (var i = 0; i < markers.length; i++) {
+            var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
+            markers[i].setPosition(point);
+            markers[i].setRotation(360* Math.random());
+        }
+        map.openInfoWindow(map.getInfoWindow(),point);
+    }
+    function run(){
+        resetMkPoint();
+        setTimeout(run,10000);
+    }
+    setTimeout(run,3000);
+</script>

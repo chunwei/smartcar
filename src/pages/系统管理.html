@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>系统资源管理</title>
+    <link rel="stylesheet" href="../style/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../style/base.css"/>
+    <link rel="stylesheet" href="../style/grid.css"/>
+    <link rel="stylesheet" href="../style/header-gray.css"/>
+    <link rel="stylesheet" href="../style/footer.css"/>
+    <link rel="stylesheet" href="../style/navbar-gray.css"/>
+    <link rel="stylesheet" href="../style/content.css"/>
+    <link rel="stylesheet" href="../style/accodion.css"/>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=rwAvLti2hTXN11t1jiipnrlw"></script>
+
+    <script>
+        var rows=[{"parentIds":"0/","resourceName":"资源","delFlag":false,"type":"menu","refrenceId":1,"parentId":"0","rootNode":true},{"imageUrl":"/static/image/sidelogo6.png","parentIds":"0/1/","permission":"","resourceName":"系统管理","delFlag":false,"priority":6,"type":"menu","refrenceId":2,"parentId":"1","url":"","rootNode":false},{"parentIds":"0/1/2/","permission":"resource:*","resourceName":"资源管理","delFlag":false,"type":"menu","refrenceId":3,"parentId":"2","url":"/user/resource/index","rootNode":false},{"parentIds":"0/1/2/3/","permission":"resource:create","resourceName":"资源新增","delFlag":false,"type":"button","refrenceId":4,"parentId":"3","rootNode":false},{"parentIds":"0/1/2/3/","permission":"resource:update","resourceName":"资源修改","delFlag":false,"type":"button","refrenceId":5,"parentId":"3","rootNode":false},{"parentIds":"0/1/2/3/","permission":"resource:delete","resourceName":"资源删除","delFlag":false,"type":"button","refrenceId":6,"parentId":"3","rootNode":false},{"parentIds":"0/1/2/3/","permission":"resource:view","resourceName":"资源查看","delFlag":false,"type":"button","refrenceId":7,"parentId":"3","rootNode":false},{"parentIds":"0/1/2","permission":"roles:*","resourceName":"角色管理","delFlag":false,"type":"menu","refrenceId":8,"parentId":"2","url":"/user/roles/index","rootNode":false},{"parentIds":"0/1/8/","permission":"roles:create","resourceName":"角色新增","delFlag":false,"type":"button","refrenceId":9,"parentId":"8","url":"","rootNode":false},{"parentIds":"0/1/8/","permission":"roles:update","resourceName":"角色修改","delFlag":false,"type":"button","refrenceId":10,"parentId":"8","url":"","rootNode":false},{"parentIds":"0/1/8/","permission":"roles:delete","resourceName":"角色删除","delFlag":false,"type":"button","refrenceId":11,"parentId":"8","url":"","rootNode":false},{"parentIds":"0/1/8/","permission":"roles:view","resourceName":"角色查看","delFlag":false,"type":"button","refrenceId":12,"parentId":"8","url":"","rootNode":false},{"parentIds":"0/1/2/","permission":"user:*","resourceName":"用户管理","delFlag":false,"type":"menu","refrenceId":13,"parentId":"2","url":"/user/userInfo/index","rootNode":false},{"parentIds":"0/1/2/13/","permission":"user:create","resourceName":"用户新增","delFlag":false,"type":"button","refrenceId":14,"parentId":"13","url":"","rootNode":false},{"parentIds":"0/1/2/13/","permission":"user:update","resourceName":"用户修改","delFlag":false,"type":"button","refrenceId":15,"parentId":"13","url":"","rootNode":false},{"parentIds":"0/1/2/13/","permission":"user:delete","resourceName":"用户删除","delFlag":false,"type":"button","refrenceId":16,"parentId":"13","url":"","rootNode":false},{"parentIds":"0/1/2/13/","permission":"user:view","resourceName":"用户查看","delFlag":false,"type":"button","refrenceId":17,"parentId":"13","url":"","rootNode":false},{"parentIds":"0/1/2/","permission":"organization:*","resourceName":"组织机构","delFlag":false,"type":"menu","refrenceId":18,"parentId":"2","url":"/user/organization","rootNode":false},{"parentIds":"0/1/2/18/","permission":"organization:create","resourceName":"组织新增","delFlag":false,"type":"button","refrenceId":19,"parentId":"18","url":"","rootNode":false},{"parentIds":"0/1/2/18/","permission":"organization:update","resourceName":"组织修改","delFlag":false,"type":"button","refrenceId":20,"parentId":"18","url":"","rootNode":false},{"parentIds":"0/1/2/18/","permission":"organization:delete","resourceName":"组织删除","delFlag":false,"type":"button","refrenceId":21,"parentId":"18","url":"","rootNode":false},{"parentIds":"0/1/2/18/","permission":"organization:view","resourceName":"组织查看","delFlag":false,"type":"button","refrenceId":22,"parentId":"18","url":"","rootNode":false},{"imageUrl":"/static/image/sidelogo5.png","parentIds":"0/1/","permission":"","resourceName":"基础管理","delFlag":false,"priority":5,"type":"menu","refrenceId":23,"parentId":"1","url":"","rootNode":false},{"imageUrl":"","parentIds":"0/1/23/","permission":"company:*","resourceName":"企业管理","delFlag":false,"type":"menu","refrenceId":24,"parentId":"23","url":"/company/index","rootNode":false},{"imageUrl":"","parentIds":"0/1/23/","permission":"car:*","resourceName":"车辆信息管理","delFlag":false,"type":"menu","refrenceId":25,"parentId":"23","url":"/car/carRegister/index","rootNode":false},{"imageUrl":"/static/image/sidelogo1.png","parentIds":"0/1/","permission":"","resourceName":"车辆位置","delFlag":false,"priority":1,"type":"menu","refrenceId":26,"parentId":"1","url":"","rootNode":false},{"imageUrl":"/static/image/sidelogo2.png","parentIds":"0/1/","permission":"","resourceName":"车辆信息","delFlag":false,"priority":2,"type":"menu","refrenceId":27,"parentId":"1","url":"","rootNode":false},{"imageUrl":"/static/image/sidelogo3.png","parentIds":"0/1/","permission":"","resourceName":"综合报表","delFlag":false,"priority":3,"type":"menu","refrenceId":28,"parentId":"1","url":"","rootNode":false},{"imageUrl":"/static/image/sidelogo4.png","parentIds":"0/1/","permission":"","resourceName":"数据分析","delFlag":false,"priority":4,"type":"menu","refrenceId":29,"parentId":"1","url":"","rootNode":false},{"imageUrl":"","parentIds":"0/1/23/24/","permission":"company:create","resourceName":"企业新增","delFlag":false,"type":"button","refrenceId":30,"parentId":"24","url":"","rootNode":false},{"imageUrl":"","parentIds":"0/1/27/","permission":"","resourceName":"车辆实时信息","delFlag":false,"type":"menu","refrenceId":31,"parentId":"27","url":"/car/carCurrent/index","rootNode":false},{"imageUrl":"","parentIds":"0/1/2/","permission":"","resourceName":"修改密码","delFlag":false,"type":"menu","refrenceId":32,"parentId":"2","url":"/user/userInfo/updatePass","rootNode":false},{"imageUrl":"","parentIds":"0/1/26/","permission":"","resourceName":"监控全部","delFlag":false,"type":"menu","refrenceId":33,"parentId":"26","url":"/car/carGps/index","rootNode":false},{"imageUrl":"","parentIds":"0/1/26/","permission":"","resourceName":"行使跟踪","delFlag":false,"type":"menu","refrenceId":34,"parentId":"26","url":"","rootNode":false},{"imageUrl":"","parentIds":"0/1/26/","permission":"","resourceName":"轨迹回放","delFlag":false,"type":"menu","refrenceId":35,"parentId":"26","url":"","rootNode":false},{"imageUrl":"","parentIds":"0/1/27/","permission":"","resourceName":"车辆历史信息","delFlag":false,"type":"menu","refrenceId":36,"parentId":"27","url":"","rootNode":false}];
+
+    </script>
+</head>
+<body>
+<header class="topheader">
+    <div class="container">
+        <a class="brand" href="#"><img src="../images/brand-gray.png"></a>
+        <div class="title">安全监控预警系统</div>
+        <a class="logininfo" href="#">登出系统</a>
+    </div>
+    <div class="container">
+        <nav class="navbar  navbar-default">
+            <div class="route">当前位置:系统管理>用户权限</div>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right ">
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">下拉菜单 <!--<span class="caret"></span>--></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">子菜单项</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">下拉菜单 <!--<span class="caret"></span>--></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">子菜单项</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Dropdown <!--<span class="caret"></span>--></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">子菜单项</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Dropdown <!--<span class="caret"></span>--></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">子菜单项</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Dropdown <!--<span class="caret"></span>--></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">子菜单项</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Dropdown <!--<span class="caret"></span>--></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">子菜单项</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Dropdown <!--<span class="caret"></span>--></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li><a href="#">子菜单项</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">子菜单项</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<div class="container mainbody">
+    <div class="row lr">
+        <div class="col-sm-4">
+            <div class="panel tcf panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">资源</h4>
+                    <br>
+                </div>
+                <div class="panel-body panel-body-nopadding">
+                    <div class="table-responsive">
+                        <table id="list_table" class="table table-hover table-striped table-condensed table-bordered">
+                        </table>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <nav id="list_table_pagination">
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div class="panel tcf panel-info">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2" id="detailContainer">
+                        <!--placeholder-->
+                            <div class="row">
+                                <div class="col-md-6 col-sm-6">
+                                    <h3>Default collapse with scaling icon</h3>
+                                    <div class="panel-group wrap" id="bs-collapse">
+
+                                        <div class="panel">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#" href="#one">
+                                                        Collapse item #1
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="one" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    Where now are the horse and the rider? Where is the horn that was blowing? Where is the helm and the hauberk, and the bright hair flowing?
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- end of panel -->
+
+                                        <div class="panel">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#" href="#two">
+                                                        Collapse item #2
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="two" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    Where is the harp on the harpstring, and the red fire glowing? Where is the spring and the harvest and the tall corn growing?
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <!-- end of panel -->
+
+                                        <div class="panel">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#" href="#three">
+                                                        Collapse item #3
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="three" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    The days have gone down in the West behind the hills into shadow. Who shall gather the smoke of the deadwood burning, Or behold the flowing years from the Sea returning?
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end of panel -->
+
+                                        <div class="panel">
+                                            <div class="panel-heading">
+                                                <h4 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#" href="#four">
+                                                        Collapse item #4
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="four" class="panel-collapse collapse in">
+                                                <div class="panel-body">
+                                                    They have passed like rain on the mountain, like a wind in the meadow; The days have gone down in the West behind the hills into shadow.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end of panel -->
+
+                                    </div>
+                                    <!-- end of #bs-collapse  -->
+
+                                </div>
+
+                                <div class="col-md-6 col-sm-6">
+                                    <h3>Accordion collapse with rotating icon</h3>
+                                    <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
+                                        <div class="panel">
+                                            <div class="panel-heading" role="tab" id="headingOne">
+                                                <h4 class="panel-title">
+                                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                        Collapsible item #1
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                                <div class="panel-body">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end of panel -->
+
+                                        <div class="panel">
+                                            <div class="panel-heading" role="tab" id="headingTwo">
+                                                <h4 class="panel-title">
+                                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                        Collapsible item #2
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                                <div class="panel-body">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end of panel -->
+
+                                        <div class="panel">
+                                            <div class="panel-heading" role="tab" id="headingThree">
+                                                <h4 class="panel-title">
+                                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                        Collapsible item #3
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                                <div class="panel-body">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end of panel -->
+
+                                        <div class="panel">
+                                            <div class="panel-heading" role="tab" id="headingFour">
+                                                <h4 class="panel-title">
+                                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                                        Collapsible item #4
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                                <div class="panel-body">
+                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- end of panel -->
+
+                                    </div>
+                                    <!-- end of #accordion -->
+
+                                </div>
+                                <!-- end of wrap -->
+
+                            </div>
+                            <!-- end of container -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h4 class="panel-title">实时报警</h4>
+                </div>
+                <div class="panel-body">
+                    <h3>暂无数据
+                        <small>(功能待明细)</small>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="doc-footer">
+    <div class="container">
+        <p class="copyright">版权所有 ©2016 XX公司</p>
+    </div>
+</footer>
+
+<script type="text/html" id="detail_table_template">
+    <div class="table-responsive">
+        <table class="table table-hover table-condensed table-bordered detail_table" id="detail_table">
+            <tbody>
+            <tr>
+                <td class="name">用户名</td>
+                <td id="v_username"></td>
+            </tr>
+            <tr>
+                <td class="name">联系方式</td>
+                <td id="v_contact"></td>
+            </tr>
+            <tr>
+                <td class="name">用户类型</td>
+                <td id="v_usertype"></td>
+            </tr>
+            <tr>
+                <td class="name">所在公司</td>
+                <td id="v_company"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</script>
+<script type="text/html" id="edit_form_template">
+    <form method="post">
+        <input type="hidden" name="action" value="edit">
+    <div class="table-responsive">
+        <table class="table table-hover table-condensed table-bordered detail_table" id="edit_form">
+            <tbody>
+            <tr>
+                <td class="name">用户名</td>
+                <td><input type="text" class="form-control" id="username" name="username"></td>
+                <td>提示信息</td>
+            </tr>
+            <tr>
+                <td class="name">联系方式</td>
+                <td><input type="text" class="form-control" id="contact" name="contact"></td>
+                <td>提示信息</td>
+            </tr>
+            <tr>
+                <td class="name">用户类型</td>
+                <td>
+                    <select class="form-control" id="usertype" name="usertype">
+                        <option>管理员</option>
+                        <option>普通用户</option>
+                    </select>
+                </td>
+                <td>提示信息</td>
+            </tr>
+            <tr>
+                <td class="name">所在公司</td>
+                <td>
+                    <select class="form-control" id="company" name="company">
+                        <option>联想</option>
+                        <option>大众</option>
+                        <option>阿里</option>
+                    </select>
+                </td>
+                <td>提示信息</td>
+            </tr>
+            <tr>
+                <td colspan="3" align="left">
+                    <button type="submit" class="btn btn-primary pull-left">保持修改</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    </form>
+</script>
+<script type="text/html" id="newitem_form_template">
+    <form method="post">
+        <input type="hidden" name="action" value="new">
+    <div class="table-responsive">
+        <table class="table table-hover table-condensed table-bordered detail_table" id="newitem_form">
+            <tbody>
+            <tr>
+                <td class="name">用户名</td>
+                <td><input type="text" class="form-control" id="username" name="username"></td>
+                <td>提示信息</td>
+            </tr>
+            <tr>
+                <td class="name">密码</td>
+                <td><input type="text" class="form-control" id="password" name="password"></td>
+                <td>提示信息</td>
+            </tr>
+            <tr>
+                <td class="name">联系方式</td>
+                <td><input type="text" class="form-control" id="contact" name="contact"></td>
+                <td>提示信息</td>
+            </tr>
+            <tr>
+                <td class="name">用户类型</td>
+                <td>
+                    <select class="form-control" id="usertype" name="usertype">
+                        <option>管理员</option>
+                        <option>普通用户</option>
+                    </select>
+                </td>
+                <td>提示信息</td>
+            </tr>
+            <tr>
+                <td class="name">所在公司</td>
+                <td>
+                    <select class="form-control" id="company" name="company">
+                        <option>联想</option>
+                        <option>大众</option>
+                        <option>阿里</option>
+                    </select>
+                </td>
+                <td>提示信息</td>
+            </tr>
+            <tr>
+                <td colspan="3" align="left">
+                    <button type="submit" class="btn btn-primary pull-left">新增用户</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    </form>
+</script>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+<script src="../js/common.js"></script>
+<script src="../js/jquery.lui.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.collapse.in').prev('.panel-heading').addClass('active');
+        $('#accordion, #bs-collapse')
+                .on('show.bs.collapse', function(a) {
+                    $(a.target).prev('.panel-heading').addClass('active');
+                })
+                .on('hide.bs.collapse', function(a) {
+                    $(a.target).prev('.panel-heading').removeClass('active');
+                });
+    });
+</script>
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+    var treeNodes={0:{}};
+    $.each(rows, function (i,r) {
+        var pids= r.parentIds.split('/');//4 3 0/1/2/3/
+        var parent=treeNodes;
+        for(var j=0;j<pids.length-1;j++){
+            parent=parent[pids[j]]
+        }
+        parent[r.refrenceId]=r;
+        var children=parent["children"]||[];
+        children.push(r);
+        parent["children"]=children;
+    });
+    var rootNode=treeNodes[0][1];//"资源"
+    //配置列表表格
+    var tableOptions={
+        num:false,
+        cols:[{name:"resourceName",title:"名称"},{name:"type",title:"类型"}],
+        rowOnClick:function(row){
+            fillDetailTable(row);
+        },
+        rows:rootNode.children,
+        actions:[
+            {name:"添加子节点",fn:onCreate,className:""},
+            {name:"修改",fn:onEdit,className:""},
+            {name:"删除",fn:onDelete,className:"btn-danger"}
+        ]
+    };
+    $('#list_table').table(tableOptions);
+
+
+
+    //新增按钮响应函数，row是行数据
+    $('#createButton').click(onCreate);
+    function onCreate(){console.log('create new item');
+        //showNewItemForm();
+    }
+
+    //修改按钮响应函数，row是行数据
+    function onEdit(row){console.log('edit row:'+row.refrenceId);
+        //fillEditDetailTable(row);
+    }
+
+    //删除按钮响应函数
+    function onDelete(row){console.log('delete row:'+row.refrenceId);
+        //跳转到删除页并带上id等参数
+        window.location.href="delete_url?action=delete&refrenceId="+row.refrenceId;
+    }
+
+
+    //获取列表数据后更新表格和翻页组件，并联动触发detail页更新
+    function onListDataLoaded(data){
+        if(data.code=="126000") {
+            if(data.rows.length>0) {
+                tableOptions.rows = data.rows;
+                $('#list_table').table(tableOptions);
+                fillDetailTable(data.rows[0]);
+            }
+            $('#list_table_pagination').pagination(data.pagination,onPageChange);
+        }else{
+            LU.msgtips("错误："+data.message,{type:"error"});
+        }
+    }
+    //页面改变时重新获取数据
+    function onPageChange(params){
+        var params=(('undefined'==typeof params)?null:params);
+        getJsonData(url,params,onListDataLoaded);
+    }
+
+    //绑定修改表单
+    function fillEditDetailTable(row){
+        var tpl=$($('#edit_form_template').html());
+        var dt=tpl.find('#edit_form');
+        dt.find('#username').val(row.name);
+        dt.find('#contact').val(row.contact);
+        dt.find('#usertype').val(row.role);
+        dt.find('#company').val(row.company);
+        $('#detailContainer').empty().append(tpl);
+    }
+    //绑定详情表格
+    function fillDetailTable(row){
+        var tpl=$($('#detail_table_template').html());
+        var dt=tpl.find('#detail_table');
+        dt.find('#v_username').text(row.name);
+        dt.find('#v_contact').text(row.contact);
+        dt.find('#v_usertype').text(row.role);
+        dt.find('#v_company').text(row.company);
+        $('#detailContainer').empty().append(tpl);
+    }
+    //显示新增表单
+    function showNewItemForm(){
+        var tpl=$($('#newitem_form_template').html());
+        $('#detailContainer').empty().append(tpl);
+    }
+
+    //查询按钮响应函数
+    $('#queryBtn').on('click',onQuery);
+    function onQuery(){
+        var key=$('#querykey').val();
+        if(!!!key){
+            alert("请输入要查询的内容");
+            return false;
+        }
+        onPageChange({filter:key});
+    }
+    //清除查询
+    $('#quickdelete').on('click',function(){
+        $('#querykey').val(null);
+        $(this).fadeOut();
+        onPageChange(null);
+    });
+    //搜索框事件监听
+    $('#querykey').on('keydown', function () {
+        var qd=$('#quickdelete');console.log($(this).val());
+        if($(this).val().trim().length>0){
+            qd.fadeIn();
+        }else{
+            qd.fadeOut();
+        }
+    });
+
+    //页面初始化，空参数，后台返回默认值
+    onPageChange(null);
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+.accordion {
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: #fff;
+    background: none;
+    box-shadow: none;
+}
+
+.accordion:last-child {
+    border-bottom: none;
+}
+
+.accordion-group > .accordion:first-child .accordion-heading {
+    border-radius: 4px 4px 0 0;
+}
+
+.accordion-group .accordion {
+    border-radius: 0;
+}
+
+.accordion-group .accordion + .accordion {
+    margin-top: 0;
+}
+
+.accordion-heading {
+    background-color: #009688;
+    border-radius: 0;
+    border: none;
+    color: #fff;
+    padding: 0;
+}
+.accordion-title{
+    margin:0 auto;
+}
+.accordion-title a {
+    display: block;
+    color: #fff;
+    padding: 15px;
+    position: relative;
+    font-size: 16px;
+    font-weight: 400;
+}
+.accordion-title a:hover,.accordion-title a:visited,
+.accordion-title a:focus,.accordion-title a:active{
+    text-decoration: none;
+}
+.accordion-body {
+    background: #fff;
+    padding: 15px;
+}
+
+.accordion:last-child .accordion-body {
+    border-radius: 0 0 4px 4px;
+}
+
+.accordion:last-child .accordion-heading {
+    border-radius: 0 0 4px 4px;
+    -webkit-transition: border-radius 0.3s linear 0.2s;
+    transition: border-radius 0.3s linear 0.2s;
+}
+
+.accordion:last-child .accordion-heading.active {
+    border-radius: 0;
+    -webkit-transition: border-radius linear 0s;
+    transition: border-radius linear 0s;
+}
+/* #bs-collapse icon scale option */
+
+.accordion-heading a:before {
+    content: '\2b';
+    position: absolute;
+    font-family: 'Glyphicons Halflings';
+    right: 10px;
+    top: 10px;
+    font-size: 16px;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+.accordion-heading.active a:before {
+    content: ' ';
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+#bs-collapse .accordion-heading a:after {
+    content: ' ';
+    font-size: 16px;
+    position: absolute;
+    font-family: 'Glyphicons Halflings';
+    right: 10px;
+    top: 10px;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+#bs-collapse .accordion-heading.active a:after {
+    content: '\2212';
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+/* #accordion rotate icon option */
+
+#accordion .accordion-heading a:before {
+    content: '\e252';
+    font-size: 16px;
+    position: absolute;
+    font-family: 'Glyphicons Halflings';
+    right: 10px;
+    top: 10px;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+#accordion .accordion-heading.active a:before {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+}

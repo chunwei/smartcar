@@ -4,7 +4,7 @@
 var LU=LU||{};
 function getJsonData(url,params,callback) {
     var jqxhr =$.ajax({
-        type: "POST",
+        type: "GET",
         url: url,
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(params),

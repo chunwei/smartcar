@@ -46,7 +46,7 @@
 }
 .collapse-group .panel-body {
     background: #fff;
-    padding: 15px;
+    padding: 0px;
 }
 
 .collapse-group .panel:last-child .panel-body {

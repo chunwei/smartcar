@@ -15,7 +15,382 @@
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=rwAvLti2hTXN11t1jiipnrlw"></script>
 
     <script>
-        var rows=[{"parentIds":"0/","resourceName":"资源","delFlag":false,"type":"menu","refrenceId":1,"parentId":"0","rootNode":true},{"imageUrl":"/static/image/sidelogo6.png","parentIds":"0/1/","permission":"","resourceName":"系统管理","delFlag":false,"priority":6,"type":"menu","refrenceId":2,"parentId":"1","url":"","rootNode":false},{"parentIds":"0/1/2/","permission":"resource:*","resourceName":"资源管理","delFlag":false,"type":"menu","refrenceId":3,"parentId":"2","url":"/user/resource/index","rootNode":false},{"parentIds":"0/1/2/3/","permission":"resource:create","resourceName":"资源新增","delFlag":false,"type":"button","refrenceId":4,"parentId":"3","rootNode":false},{"parentIds":"0/1/2/3/","permission":"resource:update","resourceName":"资源修改","delFlag":false,"type":"button","refrenceId":5,"parentId":"3","rootNode":false},{"parentIds":"0/1/2/3/","permission":"resource:delete","resourceName":"资源删除","delFlag":false,"type":"button","refrenceId":6,"parentId":"3","rootNode":false},{"parentIds":"0/1/2/3/","permission":"resource:view","resourceName":"资源查看","delFlag":false,"type":"button","refrenceId":7,"parentId":"3","rootNode":false},{"parentIds":"0/1/2","permission":"roles:*","resourceName":"角色管理","delFlag":false,"type":"menu","refrenceId":8,"parentId":"2","url":"/user/roles/index","rootNode":false},{"parentIds":"0/1/8/","permission":"roles:create","resourceName":"角色新增","delFlag":false,"type":"button","refrenceId":9,"parentId":"8","url":"","rootNode":false},{"parentIds":"0/1/8/","permission":"roles:update","resourceName":"角色修改","delFlag":false,"type":"button","refrenceId":10,"parentId":"8","url":"","rootNode":false},{"parentIds":"0/1/8/","permission":"roles:delete","resourceName":"角色删除","delFlag":false,"type":"button","refrenceId":11,"parentId":"8","url":"","rootNode":false},{"parentIds":"0/1/8/","permission":"roles:view","resourceName":"角色查看","delFlag":false,"type":"button","refrenceId":12,"parentId":"8","url":"","rootNode":false},{"parentIds":"0/1/2/","permission":"user:*","resourceName":"用户管理","delFlag":false,"type":"menu","refrenceId":13,"parentId":"2","url":"/user/userInfo/index","rootNode":false},{"parentIds":"0/1/2/13/","permission":"user:create","resourceName":"用户新增","delFlag":false,"type":"button","refrenceId":14,"parentId":"13","url":"","rootNode":false},{"parentIds":"0/1/2/13/","permission":"user:update","resourceName":"用户修改","delFlag":false,"type":"button","refrenceId":15,"parentId":"13","url":"","rootNode":false},{"parentIds":"0/1/2/13/","permission":"user:delete","resourceName":"用户删除","delFlag":false,"type":"button","refrenceId":16,"parentId":"13","url":"","rootNode":false},{"parentIds":"0/1/2/13/","permission":"user:view","resourceName":"用户查看","delFlag":false,"type":"button","refrenceId":17,"parentId":"13","url":"","rootNode":false},{"parentIds":"0/1/2/","permission":"organization:*","resourceName":"组织机构","delFlag":false,"type":"menu","refrenceId":18,"parentId":"2","url":"/user/organization","rootNode":false},{"parentIds":"0/1/2/18/","permission":"organization:create","resourceName":"组织新增","delFlag":false,"type":"button","refrenceId":19,"parentId":"18","url":"","rootNode":false},{"parentIds":"0/1/2/18/","permission":"organization:update","resourceName":"组织修改","delFlag":false,"type":"button","refrenceId":20,"parentId":"18","url":"","rootNode":false},{"parentIds":"0/1/2/18/","permission":"organization:delete","resourceName":"组织删除","delFlag":false,"type":"button","refrenceId":21,"parentId":"18","url":"","rootNode":false},{"parentIds":"0/1/2/18/","permission":"organization:view","resourceName":"组织查看","delFlag":false,"type":"button","refrenceId":22,"parentId":"18","url":"","rootNode":false},{"imageUrl":"/static/image/sidelogo5.png","parentIds":"0/1/","permission":"","resourceName":"基础管理","delFlag":false,"priority":5,"type":"menu","refrenceId":23,"parentId":"1","url":"","rootNode":false},{"imageUrl":"","parentIds":"0/1/23/","permission":"company:*","resourceName":"企业管理","delFlag":false,"type":"menu","refrenceId":24,"parentId":"23","url":"/company/index","rootNode":false},{"imageUrl":"","parentIds":"0/1/23/","permission":"car:*","resourceName":"车辆信息管理","delFlag":false,"type":"menu","refrenceId":25,"parentId":"23","url":"/car/carRegister/index","rootNode":false},{"imageUrl":"/static/image/sidelogo1.png","parentIds":"0/1/","permission":"","resourceName":"车辆位置","delFlag":false,"priority":1,"type":"menu","refrenceId":26,"parentId":"1","url":"","rootNode":false},{"imageUrl":"/static/image/sidelogo2.png","parentIds":"0/1/","permission":"","resourceName":"车辆信息","delFlag":false,"priority":2,"type":"menu","refrenceId":27,"parentId":"1","url":"","rootNode":false},{"imageUrl":"/static/image/sidelogo3.png","parentIds":"0/1/","permission":"","resourceName":"综合报表","delFlag":false,"priority":3,"type":"menu","refrenceId":28,"parentId":"1","url":"","rootNode":false},{"imageUrl":"/static/image/sidelogo4.png","parentIds":"0/1/","permission":"","resourceName":"数据分析","delFlag":false,"priority":4,"type":"menu","refrenceId":29,"parentId":"1","url":"","rootNode":false},{"imageUrl":"","parentIds":"0/1/23/24/","permission":"company:create","resourceName":"企业新增","delFlag":false,"type":"button","refrenceId":30,"parentId":"24","url":"","rootNode":false},{"imageUrl":"","parentIds":"0/1/27/","permission":"","resourceName":"车辆实时信息","delFlag":false,"type":"menu","refrenceId":31,"parentId":"27","url":"/car/carCurrent/index","rootNode":false},{"imageUrl":"","parentIds":"0/1/2/","permission":"","resourceName":"修改密码","delFlag":false,"type":"menu","refrenceId":32,"parentId":"2","url":"/user/userInfo/updatePass","rootNode":false},{"imageUrl":"","parentIds":"0/1/26/","permission":"","resourceName":"监控全部","delFlag":false,"type":"menu","refrenceId":33,"parentId":"26","url":"/car/carGps/index","rootNode":false},{"imageUrl":"","parentIds":"0/1/26/","permission":"","resourceName":"行使跟踪","delFlag":false,"type":"menu","refrenceId":34,"parentId":"26","url":"","rootNode":false},{"imageUrl":"","parentIds":"0/1/26/","permission":"","resourceName":"轨迹回放","delFlag":false,"type":"menu","refrenceId":35,"parentId":"26","url":"","rootNode":false},{"imageUrl":"","parentIds":"0/1/27/","permission":"","resourceName":"车辆历史信息","delFlag":false,"type":"menu","refrenceId":36,"parentId":"27","url":"","rootNode":false}];
+        var rows = [{
+            "parentIds": "0/",
+            "resourceName": "资源",
+            "delFlag": false,
+            "type": "menu",
+            "refrenceId": 1,
+            "parentId": "0",
+            "rootNode": true
+        }, {
+            "imageUrl": "/static/image/sidelogo6.png",
+            "parentIds": "0/1/",
+            "permission": "",
+            "resourceName": "系统管理",
+            "delFlag": false,
+            "priority": 6,
+            "type": "menu",
+            "refrenceId": 2,
+            "parentId": "1",
+            "url": "",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/",
+            "permission": "resource:*",
+            "resourceName": "资源管理",
+            "delFlag": false,
+            "type": "menu",
+            "refrenceId": 3,
+            "parentId": "2",
+            "url": "/user/resource/index",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/3/",
+            "permission": "resource:create",
+            "resourceName": "资源新增",
+            "delFlag": false,
+            "type": "button",
+            "refrenceId": 4,
+            "parentId": "3",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/3/",
+            "permission": "resource:update",
+            "resourceName": "资源修改",
+            "delFlag": false,
+            "type": "button",
+            "refrenceId": 5,
+            "parentId": "3",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/3/",
+            "permission": "resource:delete",
+            "resourceName": "资源删除",
+            "delFlag": false,
+            "type": "button",
+            "refrenceId": 6,
+            "parentId": "3",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/3/",
+            "permission": "resource:view",
+            "resourceName": "资源查看",
+            "delFlag": false,
+            "type": "button",
+            "refrenceId": 7,
+            "parentId": "3",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/",
+            "permission": "roles:*",
+            "resourceName": "角色管理",
+            "delFlag": false,
+            "type": "menu",
+            "refrenceId": 8,
+            "parentId": "2",
+            "url": "/user/roles/index",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/8/",
+            "permission": "roles:create",
+            "resourceName": "角色新增",
+            "delFlag": false,
+            "type": "button",
+            "refrenceId": 9,
+            "parentId": "8",
+            "url": "",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/8/",
+            "permission": "roles:update",
+            "resourceName": "角色修改",
+            "delFlag": false,
+            "type": "button",
+            "refrenceId": 10,
+            "parentId": "8",
+            "url": "",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/8/",
+            "permission": "roles:delete",
+            "resourceName": "角色删除",
+            "delFlag": false,
+            "type": "button",
+            "refrenceId": 11,
+            "parentId": "8",
+            "url": "",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/8/",
+            "permission": "roles:view",
+            "resourceName": "角色查看",
+            "delFlag": false,
+            "type": "button",
+            "refrenceId": 12,
+            "parentId": "8",
+            "url": "",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/",
+            "permission": "user:*",
+            "resourceName": "用户管理",
+            "delFlag": false,
+            "type": "menu",
+            "refrenceId": 13,
+            "parentId": "2",
+            "url": "/user/userInfo/index",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/13/",
+            "permission": "user:create",
+            "resourceName": "用户新增",
+            "delFlag": false,
+            "type": "button",
+            "refrenceId": 14,
+            "parentId": "13",
+            "url": "",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/13/",
+            "permission": "user:update",
+            "resourceName": "用户修改",
+            "delFlag": false,
+            "type": "button",
+            "refrenceId": 15,
+            "parentId": "13",
+            "url": "",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/13/",
+            "permission": "user:delete",
+            "resourceName": "用户删除",
+            "delFlag": false,
+            "type": "button",
+            "refrenceId": 16,
+            "parentId": "13",
+            "url": "",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/13/",
+            "permission": "user:view",
+            "resourceName": "用户查看",
+            "delFlag": false,
+            "type": "button",
+            "refrenceId": 17,
+            "parentId": "13",
+            "url": "",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/",
+            "permission": "organization:*",
+            "resourceName": "组织机构",
+            "delFlag": false,
+            "type": "menu",
+            "refrenceId": 18,
+            "parentId": "2",
+            "url": "/user/organization",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/18/",
+            "permission": "organization:create",
+            "resourceName": "组织新增",
+            "delFlag": false,
+            "type": "button",
+            "refrenceId": 19,
+            "parentId": "18",
+            "url": "",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/18/",
+            "permission": "organization:update",
+            "resourceName": "组织修改",
+            "delFlag": false,
+            "type": "button",
+            "refrenceId": 20,
+            "parentId": "18",
+            "url": "",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/18/",
+            "permission": "organization:delete",
+            "resourceName": "组织删除",
+            "delFlag": false,
+            "type": "button",
+            "refrenceId": 21,
+            "parentId": "18",
+            "url": "",
+            "rootNode": false
+        }, {
+            "parentIds": "0/1/2/18/",
+            "permission": "organization:view",
+            "resourceName": "组织查看",
+            "delFlag": false,
+            "type": "button",
+            "refrenceId": 22,
+            "parentId": "18",
+            "url": "",
+            "rootNode": false
+        }, {
+            "imageUrl": "/static/image/sidelogo5.png",
+            "parentIds": "0/1/",
+            "permission": "",
+            "resourceName": "基础管理",
+            "delFlag": false,
+            "priority": 5,
+            "type": "menu",
+            "refrenceId": 23,
+            "parentId": "1",
+            "url": "",
+            "rootNode": false
+        }, {
+            "imageUrl": "",
+            "parentIds": "0/1/23/",
+            "permission": "company:*",
+            "resourceName": "企业管理",
+            "delFlag": false,
+            "type": "menu",
+            "refrenceId": 24,
+            "parentId": "23",
+            "url": "/company/index",
+            "rootNode": false
+        }, {
+            "imageUrl": "",
+            "parentIds": "0/1/23/",
+            "permission": "car:*",
+            "resourceName": "车辆信息管理",
+            "delFlag": false,
+            "type": "menu",
+            "refrenceId": 25,
+            "parentId": "23",
+            "url": "/car/carRegister/index",
+            "rootNode": false
+        }, {
+            "imageUrl": "/static/image/sidelogo1.png",
+            "parentIds": "0/1/",
+            "permission": "",
+            "resourceName": "车辆位置",
+            "delFlag": false,
+            "priority": 1,
+            "type": "menu",
+            "refrenceId": 26,
+            "parentId": "1",
+            "url": "",
+            "rootNode": false
+        }, {
+            "imageUrl": "/static/image/sidelogo2.png",
+            "parentIds": "0/1/",
+            "permission": "",
+            "resourceName": "车辆信息",
+            "delFlag": false,
+            "priority": 2,
+            "type": "menu",
+            "refrenceId": 27,
+            "parentId": "1",
+            "url": "",
+            "rootNode": false
+        }, {
+            "imageUrl": "/static/image/sidelogo3.png",
+            "parentIds": "0/1/",
+            "permission": "",
+            "resourceName": "综合报表",
+            "delFlag": false,
+            "priority": 3,
+            "type": "menu",
+            "refrenceId": 28,
+            "parentId": "1",
+            "url": "",
+            "rootNode": false
+        }, {
+            "imageUrl": "/static/image/sidelogo4.png",
+            "parentIds": "0/1/",
+            "permission": "",
+            "resourceName": "数据分析",
+            "delFlag": false,
+            "priority": 4,
+            "type": "menu",
+            "refrenceId": 29,
+            "parentId": "1",
+            "url": "",
+            "rootNode": false
+        }, {
+            "imageUrl": "",
+            "parentIds": "0/1/23/24/",
+            "permission": "company:create",
+            "resourceName": "企业新增",
+            "delFlag": false,
+            "type": "button",
+            "refrenceId": 30,
+            "parentId": "24",
+            "url": "",
+            "rootNode": false
+        }, {
+            "imageUrl": "",
+            "parentIds": "0/1/27/",
+            "permission": "",
+            "resourceName": "车辆实时信息",
+            "delFlag": false,
+            "type": "menu",
+            "refrenceId": 31,
+            "parentId": "27",
+            "url": "/car/carCurrent/index",
+            "rootNode": false
+        }, {
+            "imageUrl": "",
+            "parentIds": "0/1/2/",
+            "permission": "",
+            "resourceName": "修改密码",
+            "delFlag": false,
+            "type": "menu",
+            "refrenceId": 32,
+            "parentId": "2",
+            "url": "/user/userInfo/updatePass",
+            "rootNode": false
+        }, {
+            "imageUrl": "",
+            "parentIds": "0/1/26/",
+            "permission": "",
+            "resourceName": "监控全部",
+            "delFlag": false,
+            "type": "menu",
+            "refrenceId": 33,
+            "parentId": "26",
+            "url": "/car/carGps/index",
+            "rootNode": false
+        }, {
+            "imageUrl": "",
+            "parentIds": "0/1/26/",
+            "permission": "",
+            "resourceName": "行使跟踪",
+            "delFlag": false,
+            "type": "menu",
+            "refrenceId": 34,
+            "parentId": "26",
+            "url": "",
+            "rootNode": false
+        }, {
+            "imageUrl": "",
+            "parentIds": "0/1/26/",
+            "permission": "",
+            "resourceName": "轨迹回放",
+            "delFlag": false,
+            "type": "menu",
+            "refrenceId": 35,
+            "parentId": "26",
+            "url": "",
+            "rootNode": false
+        }, {
+            "imageUrl": "",
+            "parentIds": "0/1/27/",
+            "permission": "",
+            "resourceName": "车辆历史信息",
+            "delFlag": false,
+            "type": "menu",
+            "refrenceId": 36,
+            "parentId": "27",
+            "url": "",
+            "rootNode": false
+        }];
 
     </script>
 </head>
@@ -150,144 +525,6 @@
                     <div class="row">
                         <div class="col-sm-10 col-sm-offset-1" id="detailContainer">
                         <!--placeholder-->
-<!--                                    <h3>系统管理</h3>
-                                    <div class="panel-group wrap collapse-group" id="accordion" role="tablist" aria-multiselectable="true">
-                                        <div class="panel  panel-default">
-                                            <div class="panel-heading" role="tab" id="headingOne">
-                                                <h4 class="panel-title">
-                                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                        Collapsible item #1
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                                                <div class="panel-body">
-
-                                                        <table class="table table-hover table-condensed table-bordered">
-                                                            <thead>
-                                                            <tr>
-                                                                <th>#</th>
-                                                                <th>heading</th>
-                                                                <th>heading</th>
-                                                                <th>heading</th>
-                                                                <th>heading</th>
-                                                                <th>heading</th>
-                                                                <th>heading</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <tr>
-                                                                <th scope="row">1</th>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">2</th>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">3</th>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">4</th>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">5</th>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <th scope="row">6</th>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                                <td>cell</td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        &lt;!&ndash; end of panel &ndash;&gt;
-
-                                        <div class="panel  panel-default">
-                                            <div class="panel-heading" role="tab" id="headingTwo">
-                                                <h4 class="panel-title">
-                                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                        Collapsible item #2
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                                                <div class="panel-body">
-                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        &lt;!&ndash; end of panel &ndash;&gt;
-
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading" role="tab" id="headingThree">
-                                                <h4 class="panel-title">
-                                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                                        Collapsible item #3
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                                                <div class="panel-body">
-                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        &lt;!&ndash; end of panel &ndash;&gt;
-
-                                        <div class="panel panel-default">
-                                            <div class="panel-heading" role="tab" id="headingFour">
-                                                <h4 class="panel-title">
-                                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                                        Collapsible item #4
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                                                <div class="panel-body">
-                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        &lt;!&ndash; end of panel &ndash;&gt;
-
-                                    </div>
-                                    &lt;!&ndash; end of #accordion &ndash;&gt;-->
                         </div>
                     </div>
                 </div>
@@ -329,6 +566,20 @@
         </div>
         <div id="collapse[id]" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading[id]">
             <div class="panel-body">
+                <table id="toptable[id]" class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <td>[type]</td>
+                        <td>[url]</td>
+                        <td>权限字符串：[permission]</td>
+                        <td align="center">
+                            <a  id="" class="btn btn-link btn-sm btn-default" href="#" role="button">添加子节点</a>
+                            <a class="btn btn-link btn-sm btn-default" href="#" role="button">修改</a>
+                            <a class="btn btn-link btn-sm btn-danger" href="#" role="button">删除</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
                 <table id="table[id]" class="table table-hover table-condensed table-bordered"></table>
             </div>
         </div>
@@ -497,6 +748,7 @@ $(document).ready(function(){
         parent["children"]=children;
     });
     var rootNode=treeNodes[0][1];//"资源"
+    console.log(rootNode);
     //配置左侧列表表格
     var tableOptions={
         num:false,
@@ -512,18 +764,22 @@ $(document).ready(function(){
         ]
     };
     $('#list_table').table(tableOptions);
-
+    fillDetailTable(rootNode.children[0]);
 
 
     //新增按钮响应函数，row是行数据
     $('#createButton').click(onCreate);
-    function onCreate(){console.log('create new item');
+    function onCreate(row){console.log('create new item');
         //showNewItemForm();
+        var url="/user/resource/"+row.refrenceId+"/addChildIndex";
+        window.open(url,'修改','width=800,height=600,toolbar=no,menubar=no,location=no,scrollbars=no');
     }
 
     //修改按钮响应函数，row是行数据
     function onEdit(row){console.log('edit row:'+row.refrenceId);
         //fillEditDetailTable(row);
+        var url="/user/resource/"+row.refrenceId+"/update";
+        window.open(url,'修改','width=800,height=600,toolbar=no,menubar=no,location=no,scrollbars=no');
     }
 
     //删除按钮响应函数
@@ -564,17 +820,46 @@ $(document).ready(function(){
     }
     //绑定详情表格
     function fillDetailTable(row){
+
         var tpl_accordion=$('#accordion_template').html();
         row.id=row.refrenceId;
         var accordion=$(instantiate(tpl_accordion,row));
-        var tableOptions={};
+        var tableOptions={
+            num:false,
+            cols:[{name:"resourceName",title:"子级名称"},
+                {name:"type",title:"类型"},
+                /*{name:"url",title:"URL路径"},*/
+                {name:"permission",title:"权限字符串"}],
+            actions:[
+                /*{name:"添加子节点",fn:onCreate,className:""},*/
+                {name:"修改",fn:onEdit,className:""},
+                {name:"删除",fn:onDelete,className:"btn-danger"}
+            ]
+        };
+        var toptableOptions={
+            num:false,
+            cols:[/*{name:"resourceName",title:"子级名称"},*/
+                {name:"type",title:"类型"},
+                {name:"url",title:"URL路径"},
+                {name:"permission",title:"权限字符串"}],
+            actions:[
+                {name:"添加子节点",fn:onCreate,className:""},
+                {name:"修改",fn:onEdit,className:""},
+                {name:"删除",fn:onDelete,className:"btn-danger"}
+            ]
+        };
         var tpl_accordion_item=$('#accordion_item_template').html();
+
         if(!!row.children&&row.children.length>0){
             var items=$.map(row.children, function (cr) {
                 cr.id=cr.refrenceId;
                 var item= $(instantiate(tpl_accordion_item,cr));
-                tableOptions.rows=row.children;
-                $('#table'+cr.id,item).table(tableOptions);
+                toptableOptions.rows=[cr];
+                $('#toptable' + cr.id, item).table(toptableOptions);
+                if(!!cr.children&&cr.children.length>0) {
+                    tableOptions.rows = cr.children;
+                    $('#table' + cr.id, item).table(tableOptions);
+                }
                 return item;
             });
             items[0].find('div[role=tabpanel]').addClass('collapse in');

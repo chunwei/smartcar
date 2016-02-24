@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../style/footer.css"/>
     <link rel="stylesheet" href="../style/navbar-gray.css"/>
     <link rel="stylesheet" href="../style/content.css"/>
-    <link rel="stylesheet" href="../style/accodion.css"/>
+    <link rel="stylesheet" href="../style/accordion.css"/>
     <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=rwAvLti2hTXN11t1jiipnrlw"></script>
 
     <script>
@@ -146,90 +146,13 @@
         </div>
         <div class="col-sm-8">
             <div class="panel tcf panel-info">
-                <div class="panel-body">
+                <div class="panel-body" style="max-height: 590px;overflow-y: auto;">
                     <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2" id="detailContainer">
+                        <div class="col-sm-10 col-sm-offset-1" id="detailContainer">
                         <!--placeholder-->
-                            <div class="row">
-                                <div class="col-md-6 col-sm-6">
-                                    <h3>Default collapse with scaling icon</h3>
-                                    <div class="panel-group wrap" id="bs-collapse">
-
-                                        <div class="panel">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title">
-                                                    <a data-toggle="collapse" data-parent="#" href="#one">
-                                                        Collapse item #1
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="one" class="panel-collapse collapse">
-                                                <div class="panel-body">
-                                                    Where now are the horse and the rider? Where is the horn that was blowing? Where is the helm and the hauberk, and the bright hair flowing?
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                        <!-- end of panel -->
-
-                                        <div class="panel">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title">
-                                                    <a data-toggle="collapse" data-parent="#" href="#two">
-                                                        Collapse item #2
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="two" class="panel-collapse collapse">
-                                                <div class="panel-body">
-                                                    Where is the harp on the harpstring, and the red fire glowing? Where is the spring and the harvest and the tall corn growing?
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <!-- end of panel -->
-
-                                        <div class="panel">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title">
-                                                    <a data-toggle="collapse" data-parent="#" href="#three">
-                                                        Collapse item #3
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="three" class="panel-collapse collapse">
-                                                <div class="panel-body">
-                                                    The days have gone down in the West behind the hills into shadow. Who shall gather the smoke of the deadwood burning, Or behold the flowing years from the Sea returning?
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- end of panel -->
-
-                                        <div class="panel">
-                                            <div class="panel-heading">
-                                                <h4 class="panel-title">
-                                                    <a data-toggle="collapse" data-parent="#" href="#four">
-                                                        Collapse item #4
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="four" class="panel-collapse collapse in">
-                                                <div class="panel-body">
-                                                    They have passed like rain on the mountain, like a wind in the meadow; The days have gone down in the West behind the hills into shadow.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- end of panel -->
-
-                                    </div>
-                                    <!-- end of #bs-collapse  -->
-
-                                </div>
-
-                                <div class="col-md-6 col-sm-6">
-                                    <h3>Accordion collapse with rotating icon</h3>
-                                    <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
-                                        <div class="panel">
+<!--                                    <h3>系统管理</h3>
+                                    <div class="panel-group wrap collapse-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                        <div class="panel  panel-default">
                                             <div class="panel-heading" role="tab" id="headingOne">
                                                 <h4 class="panel-title">
                                                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -239,13 +162,83 @@
                                             </div>
                                             <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
                                                 <div class="panel-body">
-                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+
+                                                        <table class="table table-hover table-condensed table-bordered">
+                                                            <thead>
+                                                            <tr>
+                                                                <th>#</th>
+                                                                <th>heading</th>
+                                                                <th>heading</th>
+                                                                <th>heading</th>
+                                                                <th>heading</th>
+                                                                <th>heading</th>
+                                                                <th>heading</th>
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            <tr>
+                                                                <th scope="row">1</th>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">2</th>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">3</th>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">4</th>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">5</th>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <th scope="row">6</th>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                                <td>cell</td>
+                                                            </tr>
+                                                            </tbody>
+                                                        </table>
+
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- end of panel -->
+                                        &lt;!&ndash; end of panel &ndash;&gt;
 
-                                        <div class="panel">
+                                        <div class="panel  panel-default">
                                             <div class="panel-heading" role="tab" id="headingTwo">
                                                 <h4 class="panel-title">
                                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -259,9 +252,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- end of panel -->
+                                        &lt;!&ndash; end of panel &ndash;&gt;
 
-                                        <div class="panel">
+                                        <div class="panel panel-default">
                                             <div class="panel-heading" role="tab" id="headingThree">
                                                 <h4 class="panel-title">
                                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -275,9 +268,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- end of panel -->
+                                        &lt;!&ndash; end of panel &ndash;&gt;
 
-                                        <div class="panel">
+                                        <div class="panel panel-default">
                                             <div class="panel-heading" role="tab" id="headingFour">
                                                 <h4 class="panel-title">
                                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
@@ -291,16 +284,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- end of panel -->
+                                        &lt;!&ndash; end of panel &ndash;&gt;
 
                                     </div>
-                                    <!-- end of #accordion -->
-
-                                </div>
-                                <!-- end of wrap -->
-
-                            </div>
-                            <!-- end of container -->
+                                    &lt;!&ndash; end of #accordion &ndash;&gt;-->
                         </div>
                     </div>
                 </div>
@@ -328,6 +315,31 @@
     </div>
 </footer>
 
+
+
+
+<script type="text/html" id="accordion_item_template">
+    <div class="panel  panel-default">
+        <div class="panel-heading" role="tab" id="heading[id]">
+            <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse[id]" aria-expanded="false" aria-controls="collapse[id]">
+                    [resourceName]
+                </a>
+            </h4>
+        </div>
+        <div id="collapse[id]" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading[id]">
+            <div class="panel-body">
+                <table id="table[id]" class="table table-hover table-condensed table-bordered"></table>
+            </div>
+        </div>
+    </div>
+    <!-- end of panel -->
+</script>
+<script type="text/html" id="accordion_template">
+    <div class="panel-group wrap collapse-group" id="accordion" role="tablist" aria-multiselectable="true">
+    </div>
+    <!-- end of #accordion -->
+</script>
 <script type="text/html" id="detail_table_template">
     <div class="table-responsive">
         <table class="table table-hover table-condensed table-bordered detail_table" id="detail_table">
@@ -472,6 +484,7 @@
 
 $(document).ready(function(){
     var treeNodes={0:{}};
+    //重组数据，变成树形结构
     $.each(rows, function (i,r) {
         var pids= r.parentIds.split('/');//4 3 0/1/2/3/
         var parent=treeNodes;
@@ -484,7 +497,7 @@ $(document).ready(function(){
         parent["children"]=children;
     });
     var rootNode=treeNodes[0][1];//"资源"
-    //配置列表表格
+    //配置左侧列表表格
     var tableOptions={
         num:false,
         cols:[{name:"resourceName",title:"名称"},{name:"type",title:"类型"}],
@@ -551,13 +564,27 @@ $(document).ready(function(){
     }
     //绑定详情表格
     function fillDetailTable(row){
-        var tpl=$($('#detail_table_template').html());
-        var dt=tpl.find('#detail_table');
-        dt.find('#v_username').text(row.name);
-        dt.find('#v_contact').text(row.contact);
-        dt.find('#v_usertype').text(row.role);
-        dt.find('#v_company').text(row.company);
-        $('#detailContainer').empty().append(tpl);
+        var tpl_accordion=$('#accordion_template').html();
+        row.id=row.refrenceId;
+        var accordion=$(instantiate(tpl_accordion,row));
+        var tableOptions={};
+        var tpl_accordion_item=$('#accordion_item_template').html();
+        if(!!row.children&&row.children.length>0){
+            var items=$.map(row.children, function (cr) {
+                cr.id=cr.refrenceId;
+                var item= $(instantiate(tpl_accordion_item,cr));
+                tableOptions.rows=row.children;
+                $('#table'+cr.id,item).table(tableOptions);
+                return item;
+            });
+            items[0].find('div[role=tabpanel]').addClass('collapse in');
+            accordion.append(items);
+        }
+
+
+        var title= "<h3>"+row.resourceName+"</h3>";
+
+        $('#detailContainer').empty().append(title).append(accordion);
     }
     //显示新增表单
     function showNewItemForm(){
@@ -592,7 +619,7 @@ $(document).ready(function(){
     });
 
     //页面初始化，空参数，后台返回默认值
-    onPageChange(null);
+    //onPageChange(null);
 });
 
 </script>

@@ -53,3 +53,12 @@ if(!Array.prototype.indexOfByValue){
         return -1;
     }
 }
+
+var TplReg = new RegExp("\\[([^\\[\\]]*?)\\]", 'igm'); //i g m是指分别用于指定区分大小写的匹配、全局匹配和多行匹配。
+/**
+ * 模板实例化
+ * 用例：instantiate("name:[name]",{ name: '占占'});//返回"name: 占占"
+ */
+function instantiate(template,params){
+    return template.replace(TplReg, function (node, key) { return ("undefined"!=typeof params[key])?params[key]:'';  });
+}

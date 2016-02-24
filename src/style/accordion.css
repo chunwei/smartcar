@@ -1,4 +1,4 @@
-.accordion {
+.collapse-group .panel {
     border-width: 0 0 1px 0;
     border-style: solid;
     border-color: #fff;
@@ -6,33 +6,33 @@
     box-shadow: none;
 }
 
-.accordion:last-child {
+.collapse-group .panel:last-child {
     border-bottom: none;
 }
 
-.accordion-group > .accordion:first-child .accordion-heading {
+.collapse-group.panel-group > .panel:first-child .panel-heading {
     border-radius: 4px 4px 0 0;
 }
 
-.accordion-group .accordion {
+.collapse-group.panel-group .panel {
     border-radius: 0;
 }
 
-.accordion-group .accordion + .accordion {
+.collapse-group.panel-group .panel + .panel {
     margin-top: 0;
 }
 
-.accordion-heading {
-    background-color: #009688;
+.collapse-group .panel-heading {
+    background-color: #35639A;
     border-radius: 0;
     border: none;
     color: #fff;
     padding: 0;
 }
-.accordion-title{
+.collapse-group .panel-title{
     margin:0 auto;
 }
-.accordion-title a {
+.collapse-group .panel-title a {
     display: block;
     color: #fff;
     padding: 15px;
@@ -40,33 +40,33 @@
     font-size: 16px;
     font-weight: 400;
 }
-.accordion-title a:hover,.accordion-title a:visited,
-.accordion-title a:focus,.accordion-title a:active{
+.collapse-group .panel-title a:hover,.collapse-group .panel-title a:visited,
+.collapse-group .panel-title a:focus,.collapse-group .panel-title a:active{
     text-decoration: none;
 }
-.accordion-body {
+.collapse-group .panel-body {
     background: #fff;
     padding: 15px;
 }
 
-.accordion:last-child .accordion-body {
+.collapse-group .panel:last-child .panel-body {
     border-radius: 0 0 4px 4px;
 }
 
-.accordion:last-child .accordion-heading {
+.collapse-group .panel:last-child .panel-heading {
     border-radius: 0 0 4px 4px;
     -webkit-transition: border-radius 0.3s linear 0.2s;
     transition: border-radius 0.3s linear 0.2s;
 }
 
-.accordion:last-child .accordion-heading.active {
+.collapse-group .panel:last-child .panel-heading.active {
     border-radius: 0;
     -webkit-transition: border-radius linear 0s;
     transition: border-radius linear 0s;
 }
 /* #bs-collapse icon scale option */
 
-.accordion-heading a:before {
+.collapse-group .panel-heading a:before {
     content: '\2b';
     position: absolute;
     font-family: 'Glyphicons Halflings';
@@ -79,7 +79,7 @@
     transform: scale(1);
 }
 
-.accordion-heading.active a:before {
+.collapse-group .panel-heading.active a:before {
     content: ' ';
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
@@ -87,7 +87,7 @@
     transform: scale(0);
 }
 
-#bs-collapse .accordion-heading a:after {
+#bs-collapse.collapse-group  .panel-heading a:after {
     content: ' ';
     font-size: 16px;
     position: absolute;
@@ -100,16 +100,16 @@
     transition: all 0.5s;
 }
 
-#bs-collapse .accordion-heading.active a:after {
+#bs-collapse.collapse-group  .panel-heading.active a:after {
     content: '\2212';
     -webkit-transform: scale(1);
     transform: scale(1);
     -webkit-transition: all 0.5s;
     transition: all 0.5s;
 }
-/* #accordion rotate icon option */
+/* #panel rotate icon option */
 
-#accordion .accordion-heading a:before {
+#accordion.collapse-group  .panel-heading a:before {
     content: '\e252';
     font-size: 16px;
     position: absolute;
@@ -122,7 +122,7 @@
     transition: all 0.5s;
 }
 
-#accordion .accordion-heading.active a:before {
+#accordion.collapse-group  .panel-heading.active a:before {
     -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
     -webkit-transition: all 0.5s;

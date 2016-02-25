@@ -6,6 +6,7 @@ function getJsonData(url,params,callback) {
     var jqxhr =$.ajax({
         type: "GET",
         url: url,
+
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(params),
         dataType: "json"
@@ -15,10 +16,13 @@ function getJsonData(url,params,callback) {
         console.log(resultData.code+" : " +resultData.message);
     });
 }
-
+$.ajaxSetup({
+    timeout : 5000 //超时时间设置，单位毫秒
+});
 // 全局ajax错误处理
 $( document ).ajaxError(function( event, request, settings ) {
     LU.msgtips( "与服务器通信时发生错误，操作不成功 " ,{type:"error"});
+    if(!!LU.modeBtn){LU.modeBtn.button('reset');}
 });
 
 // 提示

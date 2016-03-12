@@ -67,3 +67,12 @@ a {
     line-height: 1;
     padding-top: 45px;
 }
+
+.browser-status{
+    background: red;
+    color:#fff;
+    padding: 10px 50px;
+}
+.browser-status-action a,.browser-status-action a:active,.browser-status-action a:hover{
+  color:#fff;
+}
